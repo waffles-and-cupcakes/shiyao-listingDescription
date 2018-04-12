@@ -9,11 +9,11 @@ class App extends React.Component {
   }
 
   componentDidMount() {
-    this.getData();
+    this.getData(1);
   }
 
-  getData() {
-    axios.get('/rooms/details')
+  getData(id) {
+    axios.get(`/rooms/${id}/details`)
     .then((res) => {
       console.log(res);
     })

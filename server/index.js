@@ -1,10 +1,12 @@
 const express = require('express');
 const app = express();
+const bodyParser = require('body-parser');
 const PORT = 3003;
 const db = require('../db/index.js');
 const Listing = require('../db/listing.js');
 
 app.use(express.static('../public'));
+app.use(bodyParser.urlencoded());
 
 app.get('/rooms/:id/details', (req, res) => {
   var id = req.params.id;
