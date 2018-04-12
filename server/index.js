@@ -1,18 +1,19 @@
 const express = require('express');
 const app = express();
 const bodyParser = require('body-parser');
-const PORT = 3003;
 const db = require('../db/index.js');
 const Listing = require('../db/listing.js');
+
+const PORT = 3003;
 
 app.use(express.static('../public'));
 app.use(bodyParser.urlencoded());
 
 app.get('/rooms/:id/details', (req, res) => {
   var id = req.params.id;
-  Listing.find({_id: id}).exec((err, listings) => {
+  Listing.findOne({_id: id}).exec((err, listings) => {
     if (err) {
-      console.log(err);
+      res.send('You got an error when saving data');
     } else {
       res.send(listings);
     }
