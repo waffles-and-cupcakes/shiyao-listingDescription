@@ -3,7 +3,7 @@ const mongoose = require('mongoose');
 const Listing = require('./listing.js');
 mongoose.Promise = global.Promise;
 
-var data = {
+var data = [{
   _id: 1,
   name: 'The Joshua Tree House',
   location: 'Joshua Tree, U.S',
@@ -44,7 +44,7 @@ var data = {
     interactionWithGuests: 'While we will not be at the house during your stay, feel free to contact us with any questions! We also have a lot of local recommendations to share. We send our guests an illustrated pdf before their stay with some of our favorite local spots!     For check-in, we\'ll give you a code to the lockbox to get the keys and you can arrive anytime after 3pm and check yourself in. Please put the keys back before checking-out at 11am.',
     otherNotes: 'Our driveway wraps around the back of house, so feel free to circle around the driveway rather than backing out.     This house has old plumbing and has a septic system. PLEASE do not flush anything other than toilet paper.      The second bedroom is detached, and is about a 10ft walk outside from the main house.     Transient Occupancy Tax - A 7% TOT tax required by San Bernardino County is included in the nightly rate.     For our area, Airbnb does not yet break this down as an extra line item, but rather is included in the base price.',
   },
-};
+}];
 
 const insertListings = function() {
   Listing.create(data)
