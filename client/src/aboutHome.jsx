@@ -39,9 +39,16 @@ class AboutHome extends React.Component {
   }
 
   render() {
+
+    var summaryArr = this.props.homeData.summary.split('     ');
+    var spaceArr = this.props.homeData.space.split('     ');
+    var guestArr = this.props.homeData.guestAccess.split('     ');
+    var interactionArr = this.props.homeData.interactionWithGuests.split('     ');
+    var otherNotesArr = this.props.homeData.otherNotes.split('     ');
+
     return (
       <div>
-        <div onClick={this.openModal}>Read more about this home</div>
+        <div><span onClick={this.openModal}>Read more about this home</span></div>
         <Modal
           isOpen={this.state.modalIsOpen}
           onAfterOpen={this.afterOpenModal}
@@ -49,32 +56,44 @@ class AboutHome extends React.Component {
           style={customStyles}
           contentLabel="Example Modal"
         >
+        <button onClick={this.closeModal}>close</button>
           <div className="summary">Summary 
-            <div>{this.props.homeData.summary}
+            <div>
+              {summaryArr.map((para) => {
+                return <div>{para}</div>;
+              })}
             </div>
           </div>
           <div className="space">Space
             <div>
-              {this.props.homeData.space}
+              {spaceArr.map((para) => {
+                return <div>{para}</div>;
+              })}
             </div> 
           </div>
           <div className="guestAccess">Guest access
             <div>
-              {this.props.homeData.guestAccess}
+              {guestArr.map((para) => {
+                return <div>{para}</div>;
+              })}
             </div>
           </div>
           <div className="interaction">Interaction with guests
             <div>
-              {this.props.homeData.interactionWithGuests}
+              {interactionArr.map((para) => {
+                return <div>{para}</div>;
+              })}
             </div>
           </div>
           <div className="othernotes">
             Other notes
             <div>
-              {this.props.homeData.otherNotes}
+              {otherNotesArr.map((para) => {
+                return <div>{para}</div>;
+              })}
             </div>
           </div>
-          <button onClick={this.closeModal}>close</button>
+          
         </Modal>
       </div>
     );

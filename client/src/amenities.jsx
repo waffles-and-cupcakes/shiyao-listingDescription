@@ -39,6 +39,7 @@ class Amenities extends React.Component {
   }
 
   render() {
+ 
     return (
       <div>
         <div onClick={this.openModal}>Show all amenities</div>
@@ -49,28 +50,46 @@ class Amenities extends React.Component {
           style={customStyles}
           contentLabel="Example Modal"
         >
+        <button onClick={this.closeModal}>close</button>
           <div id="basic">
             Basic
+            {this.props.homeData.basic.map((amenity) => {
+              return <div>{amenity}</div>
+            })}
           </div>
           <div id="facilities">
             Facilities
+            {this.props.homeData.facilities.map((amenity) => {
+              return <div>{amenity}</div>
+            })}
           </div>
           <div>
             Dining
+            {this.props.homeData.dining}
           </div>
           <div>
             Guest access
+            {this.props.homeData.guestAccess}
           </div>
           <div>
             Bed & bath
+            {this.props.homeData.bedBath.map((amenity) => {
+              return <div>{amenity}</div>
+            })}
           </div>
           <div>
             Safety
+            {this.props.homeData.safety.map((amenity) => {
+              return <div>{amenity}</div>
+            })}
           </div>
           <div>
             Not included
+            {this.props.homeData.notIncluded.map((amenity) => {
+              return <div>{amenity}</div>
+            })}
           </div>
-          <button onClick={this.closeModal}>close</button>
+          
         </Modal>
       </div>
     );
