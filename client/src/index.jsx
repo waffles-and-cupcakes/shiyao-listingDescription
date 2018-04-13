@@ -2,6 +2,7 @@ import React from 'react';
 import ReactDOM from 'react-dom';
 import $ from 'jquery';
 import axios from 'axios';
+import AboutHome from './aboutHome.jsx';
 
 class App extends React.Component {
   constructor() {
@@ -32,7 +33,6 @@ class App extends React.Component {
     const { isLoaded, listingData } = this.state;
     const data = listingData;
 
-    //var listing = this.state.listingData;
     if (!isLoaded) {
       return (<div>Loading</div>);
     } else {
@@ -51,7 +51,8 @@ class App extends React.Component {
             <span id="numguests">{data.maxNumOfGuests}</span><span id="numbeds">{data.numOfBeds}</span><span id="numbaths">{data.numOfBaths}</span>
           </div>
           <div id="summary">{data.aboutHome.summary}</div>
-            <div id="readmore">Read more about the space</div>
+            <div id="readmore"></div>
+            <AboutHome homeData={this.state.listingData} />
             <div id="contact">Contact host</div>
           <div className="amentities">
             <div>{data.amenities.basic[0]}</div>
