@@ -3,12 +3,15 @@ import ReactDOM from 'react-dom';
 import $ from 'jquery';
 import axios from 'axios';
 import AboutHome from './aboutHome.jsx';
+import Amenities from './amenities.jsx';
 
 class App extends React.Component {
   constructor() {
     super();
     this.state = {
       listingData: [],
+      aboutHome: [],
+      amenities: [],
       isLoaded: false
     };
   }
@@ -19,6 +22,8 @@ class App extends React.Component {
     .then((res) => {
       this.setState({
         listingData: res.data,
+        aboutHome: res.data.aboutHome,
+        amenities: res.data.amenities,
         isLoaded: true
       });
       console.log(this.state.listingData);
@@ -52,13 +57,14 @@ class App extends React.Component {
           </div>
           <div id="summary">{data.aboutHome.summary}</div>
             <div id="readmore"></div>
-            <AboutHome homeData={this.state.listingData} />
+            <AboutHome homeData={this.state.aboutHome} />
             <div id="contact">Contact host</div>
           <div className="amentities">
             <div>{data.amenities.basic[0]}</div>
             <div>{data.amenities.basic[1]}</div>
             <div>{data.amenities.basic[2]}</div>
-            <div>Show all 7 amenities</div>
+            <div id="amenities"></div>
+            <Amenities homeData={this.state.amenities}/>
           </div>
           <div id="sleeping">
             {data.sleepingArrangements.bedroom1}

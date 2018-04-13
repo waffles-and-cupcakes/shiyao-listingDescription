@@ -13,7 +13,7 @@ const customStyles = {
   }
 };
 
-class AboutHome extends React.Component {
+class Amenities extends React.Component {
   constructor() {
     super();
 
@@ -41,7 +41,7 @@ class AboutHome extends React.Component {
   render() {
     return (
       <div>
-        <div onClick={this.openModal}>Read more about this home</div>
+        <div onClick={this.openModal}>Show all amenities</div>
         <Modal
           isOpen={this.state.modalIsOpen}
           onAfterOpen={this.afterOpenModal}
@@ -49,30 +49,26 @@ class AboutHome extends React.Component {
           style={customStyles}
           contentLabel="Example Modal"
         >
-          <div className="summary">Summary 
-            <div>{this.props.homeData.summary}
-            </div>
+          <div id="basic">
+            Basic
           </div>
-          <div className="space">Space
-            <div>
-              {this.props.homeData.space}
-            </div> 
+          <div id="facilities">
+            Facilities
           </div>
-          <div className="guestAccess">Guest access
-            <div>
-              {this.props.homeData.guestAccess}
-            </div>
+          <div>
+            Dining
           </div>
-          <div className="interaction">Interaction with guests
-            <div>
-              {this.props.homeData.interactionWithGuests}
-            </div>
+          <div>
+            Guest access
           </div>
-          <div className="othernotes">
-            Other notes
-            <div>
-              {this.props.homeData.otherNotes}
-            </div>
+          <div>
+            Bed & bath
+          </div>
+          <div>
+            Safety
+          </div>
+          <div>
+            Not included
           </div>
           <button onClick={this.closeModal}>close</button>
         </Modal>
@@ -81,5 +77,5 @@ class AboutHome extends React.Component {
   }
 }
 
-export default AboutHome;
+export default Amenities;
 
