@@ -48,7 +48,7 @@ class AboutHome extends React.Component {
 
     return (
       <div>
-        <div><span onClick={this.openModal}>Read more about this home</span></div>
+        <div id="readmorehehe"><span id="readmoreabouthome" onClick={this.openModal}>Read more about this home</span></div>
         <Modal
           isOpen={this.state.modalIsOpen}
           onAfterOpen={this.afterOpenModal}
@@ -56,40 +56,40 @@ class AboutHome extends React.Component {
           style={customStyles}
           contentLabel="Example Modal"
         >
-        <button onClick={this.closeModal}>close</button>
+        <a className="btn-floating btn-small waves-effect waves-light white" onClick={this.closeModal}><i className="material-icons cyan-text text-darken-4">clear</i></a>
           <div className="summary">Summary 
             <div>
-              {summaryArr.map((para) => {
-                return <div>{para}</div>;
+              {summaryArr.map((para, index) => {
+                return <div key={index}>{para}</div>;
               })}
             </div>
           </div>
           <div className="space">Space
             <div>
-              {spaceArr.map((para) => {
-                return <div>{para}</div>;
+              {spaceArr.map((para, index) => {
+                return <div key={index}>{para}</div>;
               })}
             </div> 
           </div>
           <div className="guestAccess">Guest access
             <div>
-              {guestArr.map((para) => {
-                return <div>{para}</div>;
+              {guestArr.map((para, index) => {
+                return <div key={index}>{para}</div>;
               })}
             </div>
           </div>
           <div className="interaction">Interaction with guests
             <div>
-              {interactionArr.map((para) => {
-                return <div>{para}</div>;
+              {interactionArr.map((para, index) => {
+                return <div key={index}>{para}</div>;
               })}
             </div>
           </div>
           <div className="othernotes">
             Other notes
             <div>
-              {otherNotesArr.map((para) => {
-                return <div>{para}</div>;
+              {otherNotesArr.map((para, index) => {
+                return <div key={index}>{para}</div>;
               })}
             </div>
           </div>

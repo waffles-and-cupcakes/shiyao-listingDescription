@@ -42,10 +42,16 @@ class App extends React.Component {
       return (<div>Loading</div>);
     } else {
       return (
-        <div>
+        <div className="container">
           <div className="listingtitle">
             <div id="listingtype">
-              {data.type}
+              {data.type.toUpperCase()}
+            </div>
+            <div id="host">
+              <img src={data.hostPic} alt="Avatar"></img>
+              <div>
+                {data.hostName}
+            </div>
             </div>
             <div id="title">
               {data.name}

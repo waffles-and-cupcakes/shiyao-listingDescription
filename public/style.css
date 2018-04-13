@@ -1,0 +1,46 @@
+body {
+  font-family: 'Montserrat', sans-serif;
+  color: #484848;
+}
+
+#listingtype {
+  font-size: 12px;
+}
+
+#title {
+  font-size:30px;
+}
+
+#readmoreabouthome {
+  color: #118488;
+}
+
+#readmoreabouthome:hover {
+  cursor: pointer;
+  text-decoration: underline;
+}
+
+.amenities {
+}
+
+#showamenities {
+  color: #118488;
+}
+
+#showamenities:hover {
+  cursor: pointer;
+  text-decoration: underline;
+}
+
+img {
+  border-radius: 50%;
+  height: 80px;
+  width: 80px;
+}
+
+#host {
+  float: right;
+  text-align: center;
+}
+
+

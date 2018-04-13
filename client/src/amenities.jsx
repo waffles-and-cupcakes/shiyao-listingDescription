@@ -14,8 +14,8 @@ const customStyles = {
 };
 
 class Amenities extends React.Component {
-  constructor() {
-    super();
+  constructor(props) {
+    super(props);
 
     this.state = {
       modalIsOpen: false
@@ -41,8 +41,8 @@ class Amenities extends React.Component {
   render() {
  
     return (
-      <div>
-        <div onClick={this.openModal}>Show all amenities</div>
+      <div className="amenities">
+        <div><span id="showamenities"onClick={this.openModal}>Show all amenities</span></div>
         <Modal
           isOpen={this.state.modalIsOpen}
           onAfterOpen={this.afterOpenModal}
@@ -50,46 +50,49 @@ class Amenities extends React.Component {
           style={customStyles}
           contentLabel="Example Modal"
         >
-        <button onClick={this.closeModal}>close</button>
+        <a className="btn-floating btn-small waves-effect waves-light white" onClick={this.closeModal}><i className="material-icons cyan-text text-darken-4">clear</i></a>
           <div id="basic">
             Basic
-            {this.props.homeData.basic.map((amenity) => {
-              return <div>{amenity}</div>
+            {this.props.homeData.basic.map((amenity, index) => {
+              return <div key={index}>{amenity}</div>
             })}
           </div>
           <div id="facilities">
             Facilities
-            {this.props.homeData.facilities.map((amenity) => {
-              return <div>{amenity}</div>
+            {this.props.homeData.facilities.map((amenity, index) => {
+              return <div key={index}>{amenity}</div>
             })}
           </div>
           <div>
             Dining
-            {this.props.homeData.dining}
+            <div>
+              {this.props.homeData.dining}
+            </div>
           </div>
           <div>
             Guest access
-            {this.props.homeData.guestAccess}
+            <div>
+              {this.props.homeData.guestAccess}
+            </div>
           </div>
           <div>
             Bed & bath
-            {this.props.homeData.bedBath.map((amenity) => {
-              return <div>{amenity}</div>
+            {this.props.homeData.bedBath.map((amenity, index) => {
+              return <div key={index}>{amenity}</div>
             })}
           </div>
           <div>
             Safety
-            {this.props.homeData.safety.map((amenity) => {
-              return <div>{amenity}</div>
+            {this.props.homeData.safety.map((amenity, index) => {
+              return <div key={index}>{amenity}</div>
             })}
           </div>
           <div>
             Not included
-            {this.props.homeData.notIncluded.map((amenity) => {
-              return <div>{amenity}</div>
+            {this.props.homeData.notIncluded.map((amenity, index) => {
+              return <div key={index}>{amenity}</div>
             })}
-          </div>
-          
+          </div>        
         </Modal>
       </div>
     );
