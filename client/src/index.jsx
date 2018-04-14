@@ -42,10 +42,15 @@ class App extends React.Component {
       return (<div>Loading</div>);
     } else {
       return (
-        <div>
-          <div className="listingtitle">
+        <div className="container">
             <div id="listingtype">
-              {data.type}
+              {data.type.toUpperCase()}
+            </div>
+            <div id="host">
+              <img src={data.hostPic} alt="Avatar"></img>
+              <div>
+                {data.hostName}
+            </div>
             </div>
             <div id="title">
               {data.name}
@@ -53,20 +58,25 @@ class App extends React.Component {
             <div id="location">
               {data.location}
             </div>
-            <span id="numguests">{data.maxNumOfGuests}</span><span id="numbeds">{data.numOfBeds}</span><span id="numbaths">{data.numOfBaths}</span>
-          </div>
+            <div className="stats">
+              <i className="material-icons icons">people</i><span className="roomstats">{data.maxNumOfGuests} guests</span>
+              <i className="material-icons icons">hotel</i><span className="roomstats">{data.numOfBeds} beds</span>
+              <i className="material-icons icons">wc</i><span className="roomstats">{data.numOfBaths} baths</span>
+            </div>
           <div id="summary">{data.aboutHome.summary}</div>
             <div id="readmore"></div>
             <AboutHome homeData={this.state.aboutHome} />
-            <div id="contact">Contact host</div>
-          <div className="amentities">
+            <div className="link">Contact host</div>
+          <div>
+            <div className="subtitles">Amenities</div>
             <div>{data.amenities.basic[0]}</div>
             <div>{data.amenities.basic[1]}</div>
             <div>{data.amenities.basic[2]}</div>
             <div id="amenities"></div>
             <Amenities homeData={this.state.amenities}/>
           </div>
-          <div id="sleeping">
+          <div>
+            <div className="subtitles">Sleeping arrangements</div>
             {data.sleepingArrangements.bedroom1}
             {data.sleepingArrangements.bedroom2}
             {data.sleepingArrangements.bedroom3}
@@ -74,16 +84,18 @@ class App extends React.Component {
             {data.sleepingArrangements.bedroom5}
             {data.sleepingArrangements.CommonSpaces}
           </div>
-          <div id="houserules">
+          <div>
+            <div className="subtitles">House rules</div>
             <div>{data.houseRules.basicRules[0]}</div>
             <div>{data.houseRules.basicRules[1]}</div>
             <div>{data.houseRules.basicRules[2]}</div>
             <div>{data.houseRules.basicRules[3]}</div>
             <div>{data.houseRules.basicRules[4]}</div>
           </div>
-          <div>Read all rules</div>
+          <div id="readrules" className="link">Read all rules <i className="material-icons icons">keyboard_arrow_down</i></div>
+          <div className="subtitles">Cancellations</div>
           <div id="cancel">{data.cancellationPolicy}</div>
-          <div>Get Details</div>
+          <div className="link">Get Details</div>
         </div>
       );
     }

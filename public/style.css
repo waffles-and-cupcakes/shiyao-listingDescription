@@ -1,0 +1,62 @@
+body {
+  font-weight: 250;
+  color: #484848;
+}
+
+#listingtype {
+  font-size: 12px;
+  font-weight: normal;
+  margin-top: 20px;
+}
+
+#title {
+  font-size:30px;
+  font-weight: bold;
+}
+
+.link {
+  color: #118488;
+  font-weight: normal;
+  margin-top: 20px;
+  margin-bottom: 20px;
+}
+
+.link:hover {
+  cursor: pointer;
+  text-decoration: underline;
+}
+
+img {
+  border-radius: 50%;
+  height: 80px;
+  width: 80px;
+}
+
+#host {
+  float: right;
+  text-align: center;
+}
+
+.roomstats {
+  margin-right: 15px;
+  margin-left: 10px;
+}
+
+.icons {
+  vertical-align: bottom;
+  font-size: 20px !important;
+}
+
+#summary {
+  margin-top: 25px;
+  margin-bottom: 25px;
+}
+
+.stats {
+  margin-top: 20px;
+}
+
+.subtitles {
+  font-weight: bold;
+  margin-bottom: 20px;
+}
