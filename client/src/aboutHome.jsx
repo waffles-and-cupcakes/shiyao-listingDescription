@@ -4,12 +4,15 @@ import Modal from 'react-modal';
 
 const customStyles = {
   content : {
-    top                   : '50%',
-    left                  : '50%',
-    right                 : 'auto',
-    bottom                : 'auto',
-    marginRight           : '-50%',
-    transform             : 'translate(-50%, -50%)'
+    top: '50%',
+    left: '50%',
+    right: 'auto',
+    bottom: 'auto',
+    marginRight: '-50%',
+    transform: 'translate(-50%, -50%)',
+    overflow: 'scroll',
+    width: '600px',
+    height: '600px',
   }
 };
 
@@ -69,7 +72,8 @@ class AboutHome extends React.Component {
               {spaceArr.map((para, index) => {
                 return <div key={index}>{para}</div>;
               })}
-            </div> 
+            </div>
+
           </div>
           <div className="guestAccess">Guest access
             <div>

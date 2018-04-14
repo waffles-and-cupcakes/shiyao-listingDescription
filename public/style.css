@@ -43,4 +43,23 @@ img {
   text-align: center;
 }
 
+#readrules {
+  color: #118488;
+}
+
+#readrules:hover {
+  cursor: pointer;
+  text-decoration: underline;
+}
+
+.roomstats {
+  margin-right: 15px;
+  margin-left: 10px;
+}
+
+#downarrow {
+   vertical-align: bottom;
+   font-size: 18px !important;
+}
+
 

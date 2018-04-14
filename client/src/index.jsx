@@ -59,7 +59,9 @@ class App extends React.Component {
             <div id="location">
               {data.location}
             </div>
-            <span id="numguests">{data.maxNumOfGuests}</span><span id="numbeds">{data.numOfBeds}</span><span id="numbaths">{data.numOfBaths}</span>
+            <i className="material-icons">people</i><span className="roomstats">{data.maxNumOfGuests} guests</span>
+            <i className="material-icons">hotel</i><span className="roomstats">{data.numOfBeds} beds</span>
+            <i className="material-icons">wc</i><span className="roomstats">{data.numOfBaths} baths</span>
           </div>
           <div id="summary">{data.aboutHome.summary}</div>
             <div id="readmore"></div>
@@ -87,7 +89,7 @@ class App extends React.Component {
             <div>{data.houseRules.basicRules[3]}</div>
             <div>{data.houseRules.basicRules[4]}</div>
           </div>
-          <div>Read all rules</div>
+          <div id="readrules">Read all rules <i className="material-icons" id="downarrow">keyboard_arrow_down</i></div>
           <div id="cancel">{data.cancellationPolicy}</div>
           <div>Get Details</div>
         </div>
