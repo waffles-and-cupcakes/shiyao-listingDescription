@@ -43,7 +43,6 @@ class App extends React.Component {
     } else {
       return (
         <div className="container">
-          <div className="listingtitle">
             <div id="listingtype">
               {data.type.toUpperCase()}
             </div>
@@ -59,14 +58,15 @@ class App extends React.Component {
             <div id="location">
               {data.location}
             </div>
-            <i className="material-icons">people</i><span className="roomstats">{data.maxNumOfGuests} guests</span>
-            <i className="material-icons">hotel</i><span className="roomstats">{data.numOfBeds} beds</span>
-            <i className="material-icons">wc</i><span className="roomstats">{data.numOfBaths} baths</span>
-          </div>
+            <div className="stats">
+              <i className="material-icons icons">people</i><span className="roomstats">{data.maxNumOfGuests} guests</span>
+              <i className="material-icons icons">hotel</i><span className="roomstats">{data.numOfBeds} beds</span>
+              <i className="material-icons icons">wc</i><span className="roomstats">{data.numOfBaths} baths</span>
+            </div>
           <div id="summary">{data.aboutHome.summary}</div>
             <div id="readmore"></div>
             <AboutHome homeData={this.state.aboutHome} />
-            <div id="contact">Contact host</div>
+            <div className="link">Contact host</div>
           <div className="amentities">
             <div>{data.amenities.basic[0]}</div>
             <div>{data.amenities.basic[1]}</div>
@@ -89,9 +89,9 @@ class App extends React.Component {
             <div>{data.houseRules.basicRules[3]}</div>
             <div>{data.houseRules.basicRules[4]}</div>
           </div>
-          <div id="readrules">Read all rules <i className="material-icons" id="downarrow">keyboard_arrow_down</i></div>
+          <div id="readrules" className="link">Read all rules <i className="material-icons icons">keyboard_arrow_down</i></div>
           <div id="cancel">{data.cancellationPolicy}</div>
-          <div>Get Details</div>
+          <div className="link">Get Details</div>
         </div>
       );
     }

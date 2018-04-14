@@ -51,7 +51,7 @@ class AboutHome extends React.Component {
 
     return (
       <div>
-        <div id="readmorehehe"><span id="readmoreabouthome" onClick={this.openModal}>Read more about this home</span></div>
+        <div id="readmorehehe"><span className="link" onClick={this.openModal}>Read more about this home</span></div>
         <Modal
           isOpen={this.state.modalIsOpen}
           onAfterOpen={this.afterOpenModal}

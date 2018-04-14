@@ -1,33 +1,26 @@
 body {
-  font-family: 'Montserrat', sans-serif;
+  font-weight: 250;
   color: #484848;
 }
 
 #listingtype {
   font-size: 12px;
+  font-weight: normal;
+  margin-top: 20px;
 }
 
 #title {
   font-size:30px;
+  font-weight: bold;
 }
 
-#readmoreabouthome {
+.link {
   color: #118488;
+  font-weight: normal;
+  margin-top: 20px;
 }
 
-#readmoreabouthome:hover {
-  cursor: pointer;
-  text-decoration: underline;
-}
-
-.amenities {
-}
-
-#showamenities {
-  color: #118488;
-}
-
-#showamenities:hover {
+.link:hover {
   cursor: pointer;
   text-decoration: underline;
 }
@@ -43,23 +36,22 @@ img {
   text-align: center;
 }
 
-#readrules {
-  color: #118488;
-}
-
-#readrules:hover {
-  cursor: pointer;
-  text-decoration: underline;
-}
-
 .roomstats {
   margin-right: 15px;
   margin-left: 10px;
 }
 
-#downarrow {
-   vertical-align: bottom;
-   font-size: 18px !important;
+.icons {
+  vertical-align: bottom;
+  font-size: 20px !important;
 }
 
+#summary {
+  margin-top: 25px;
+  margin-bottom: 25px;
+}
+
+.stats {
+  margin-top: 20px;
+}
 
