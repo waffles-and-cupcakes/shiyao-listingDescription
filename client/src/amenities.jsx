@@ -44,8 +44,8 @@ class Amenities extends React.Component {
   render() {
  
     return (
-      <div className="amenities">
-        <div><span className="link" onClick={this.openModal}>Show all amenities</span></div>
+      <div>
+        <div className="link"><span onClick={this.openModal}>Show all amenities</span></div>
         <Modal
           isOpen={this.state.modalIsOpen}
           onAfterOpen={this.afterOpenModal}
