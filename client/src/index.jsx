@@ -4,6 +4,8 @@ import $ from 'jquery';
 import axios from 'axios';
 import AboutHome from './aboutHome.jsx';
 import Amenities from './amenities.jsx';
+import ReactCSSTransitionGroup from 'react-addons-css-transition-group';
+import HouseRules from './houseRules.jsx';
 
 class App extends React.Component {
   constructor() {
@@ -37,12 +39,15 @@ class App extends React.Component {
 
     const { isLoaded, listingData } = this.state;
     const data = listingData;
+    var elem = document.querySelector('.collapsible');
+    //var instance = M.Collapsible.init(elem);
 
     if (!isLoaded) {
       return (<div>Loading</div>);
     } else {
       return (
         <div className="container">
+          <div className="section">
             <div id="listingtype">
               {data.type.toUpperCase()}
             </div>
@@ -67,7 +72,8 @@ class App extends React.Component {
             <div id="readmore"></div>
             <AboutHome homeData={this.state.aboutHome} />
             <div className="link">Contact host</div>
-          <div>
+          </div>
+          <div className="section">
             <div className="subtitles">Amenities</div>
             <div>{data.amenities.basic[0]}</div>
             <div>{data.amenities.basic[1]}</div>
@@ -75,24 +81,26 @@ class App extends React.Component {
             <div id="amenities"></div>
             <Amenities homeData={this.state.amenities}/>
           </div>
-          <div>
+          <div className="section">
             <div className="subtitles">Sleeping arrangements</div>
-            {data.sleepingArrangements.bedroom1}
-            {data.sleepingArrangements.bedroom2}
-            {data.sleepingArrangements.bedroom3}
-            {data.sleepingArrangements.bedroom4}
-            {data.sleepingArrangements.bedroom5}
-            {data.sleepingArrangements.CommonSpaces}
+            <div className="row">
+              <div className="col s3">{data.sleepingArrangements.bedroom1}</div>
+              <div className="col s3">{data.sleepingArrangements.bedroom2}</div>
+              <div className="col s3">{data.sleepingArrangements.bedroom3}</div>
+              <div className="col s3">{data.sleepingArrangements.bedroom4}</div>
+              <div className="col s3">{data.sleepingArrangements.bedroom5}</div>
+              <div className="col s3">{data.sleepingArrangements.CommonSpaces}</div>
+            </div>
           </div>
-          <div>
+          <div className="section">
             <div className="subtitles">House rules</div>
             <div>{data.houseRules.basicRules[0]}</div>
             <div>{data.houseRules.basicRules[1]}</div>
             <div>{data.houseRules.basicRules[2]}</div>
             <div>{data.houseRules.basicRules[3]}</div>
             <div>{data.houseRules.basicRules[4]}</div>
+            <HouseRules houseRules={this.state.listingData}/>
           </div>
-          <div id="readrules" className="link">Read all rules <i className="material-icons icons">keyboard_arrow_down</i></div>
           <div className="subtitles">Cancellations</div>
           <div id="cancel">{data.cancellationPolicy}</div>
           <div className="link">Get Details</div>

@@ -17,8 +17,8 @@ const customStyles = {
 };
 
 class AboutHome extends React.Component {
-  constructor() {
-    super();
+  constructor(props) {
+    super(props);
 
     this.state = {
       modalIsOpen: false
@@ -51,13 +51,13 @@ class AboutHome extends React.Component {
 
     return (
       <div>
-        <div id="readmorehehe"><span className="link" onClick={this.openModal}>Read more about this home</span></div>
+        <div><span className="link" onClick={this.openModal}>Read more about this home</span></div>
         <Modal
           isOpen={this.state.modalIsOpen}
           onAfterOpen={this.afterOpenModal}
           onRequestClose={this.closeModal}
           style={customStyles}
-          contentLabel="Example Modal"
+          contentLabel="AboutHome"
         >
         <a className="btn-floating btn-small waves-effect waves-light white" onClick={this.closeModal}><i className="material-icons cyan-text text-darken-4">clear</i></a>
           <div className="summary">Summary 
