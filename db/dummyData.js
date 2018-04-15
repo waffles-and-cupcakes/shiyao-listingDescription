@@ -23,15 +23,21 @@ var data = [{
     safety:['Fire extinguisher', 'Carbon monoxide detector', 'Smoke detector', 'First aid kit'],
     notIncluded:['Washer','Private entrance'],
   },
-  sleepingArrangements: {
-    bedroom1: '1 king bed',
-    bedroom2: '1 king bed',
-    bedroom3: null,
-    bedroom4: null,
-    bedroom5: null,
-    CommonSpaces: '1 floor mattress, 1 hammock',
-  },
-  accessibility: null,
+    sleepingArrangements: [
+    {
+      name: 'Bedroom1', 
+      value: '2 queen beds, 1 single bed'
+    }, 
+    {
+      name: 'Bedroom2',
+      value: '1 king bed',
+    },
+    {
+      name: 'Common spaces',
+      value: '2 queen beds, 1 single bed'
+    }
+  ],
+  accessibility: '',
   houseRules: {
     basicRules: ['No smoking', 'Not suitable for pets', 'No parties or events', 'Check-in is anytime after 3PM', 'Check out by 11AM', 'Self check-in with lockbox'],
     textBody: 'Check-in is at 3pm. (No early check-ins please unless otherwise approved)     Sorry no pets, indoor smoking, photoshoots without prior approval, large parties/events, shooting guns, outdoor fires, fireworks or extra guests (past six people). Please also respect our neighbors and refrain from incredibly loud noises. If you\'re interested in doing a photoshoot at the house, please contact us for pricing.     You may alter your dates once up to 30 days prior to your stay. With less than 30 days advance notice, our cancellation policy will apply. Unfortunately, we make no exceptions to this rule.     We have a security camera overlooking the driveway on the corner of the garage. Joshua Tree is very safe, but we have this for added safety.     Please also treat the Joshua Trees with respect. Do not climb them or hang anything off of them since they are very old and fragile (in fact they are actually very large plants - not trees at all!)     We have the house professionally cleaned, but do please make sure your dishes are cleaned and that everything is in the general place that you found it on arrival. This helps keep our cleaning fee down. If dishes are left undone, an additional cleaning fee will be taken out of your security deposit.     When checking out, please make sure all doors are shut and locked, then put the key in the lockbox. If you forget to leave the key, we\'ll take a fee out of your security deposit.     Besides that, enjoy the house! We\'ve put a lot of time and energy into making this a beautiful and relaxing place to stay. Please be respectful of all of the furniture and accessories that we\'ve lovingly collected. Everything in the house is very special to us.     Thanks so much and enjoy your stay!!',
@@ -59,21 +65,23 @@ var data = [{
   amenities: {
     basic: ['Wifi', 'Essentials', 'Hot water'],
     facilities:['Free parking on premises'],
-    dining: null,
+    dining: '',
     guestAccess:'Host greets you',
     bedBath:['Hair dyer', 'Shampoo'],
-    safety: null,
+    safety: [],
     notIncluded:['Air conditioning','Heating', 'TV', 'Washer', 'Kitchen', 'Private entrance', 'Carbon monoxide detector', 'smoke detector'],
   },
-  sleepingArrangements: {
-    bedroom1: '2 queen beds, 1 single bed',
-    bedroom2: null,
-    bedroom3: null,
-    bedroom4: null,
-    bedroom5: null,
-    CommonSpaces: '2 queen beds, 1 single bed',
-  },
-  accessibility: null,
+  sleepingArrangements: [
+    {
+      name: 'Bedroom1', 
+      value: '2 queen beds, 1 single bed'
+    }, 
+    {
+      name: 'Common spaces',
+      value: '2 queen beds, 1 single bed'
+    }
+  ],
+  accessibility: '',
   houseRules: {
     basicRules: ['No smoking', 'No parties or events', 'Not safe or suitable for children(0-12 years)','Check-in is 2PM - 8PM', 'Check out by 10AM'],
     textBody: "The bathroom Pondhouse guests use is downstairs in Peter's studio building. His studio is upstairs and is off limits. Unless you ask one of us for a tour. If Peter is not busy he will probably be happy to show you. Please be respectful that this is his workspace. Please don't hang out on the stairs or talk loudly in this space - he works at all hours ( he's an artist!:)      No smoking in the pond house or bathroom. If you have a dog you may not leave him/her while you are gone. Take your trash from the pond house up to the studio and put into the recycling and trash that is designated for your use. Please do not leave candles burning when not in the pond house. Please latch the pond house when you leave. A good rule of thumb to get those 5 star guest reviews? Leave the pond house how you found it :)     Check in time is 1PM - 8PM     When submitting an inquiry, please tell us a little about yourself and your interest in the Pondhouse. Also let us know that you have read the full description and understand the house rules and feel comfortable staying in a treehouse.      Please keep in mind that the Pondhouse is meant as a quiet retreat. If you have ANYTHING else in mind, you must let us know ahead of time and get appropriate permission before booking. Photo shoots, events, ceremonies etc. are subject to additional fees.     If you are interested in using the Pondhouse for a photo shoot, you must give us explicit descriptions of your concept before booking as well as your location budget. Please be aware that photoshoots are subject to different rules and rates, and must be approved by us in advance.     Guests will receive on arrival a full list of property details, rules and local recommendations.      If using images from this site, please credit the appropriate photographers, as are noted in the individual image descriptions. Please tag us on Instagram #pondhouse     Thanks and we look forward to seeing you soon!",

@@ -32,14 +32,10 @@ const listingSchema = new mongoose.Schema({
       type: String,
     }]
   },
-  sleepingArrangements: {
-    bedroom1: String,
-    bedroom2: String,
-    bedroom3: String,
-    bedroom4: String,
-    bedroom5: String,
-    CommonSpaces: String,
-  },
+  sleepingArrangements: [{
+    name: String,
+    value: String 
+  }],
   accessibility: [{
     type: String,
   }],
