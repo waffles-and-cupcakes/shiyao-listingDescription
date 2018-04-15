@@ -83,13 +83,15 @@ class App extends React.Component {
           </div>
           <div className="section">
             <div className="subtitles">Sleeping arrangements</div>
-            <div className="row">
-              <div className="col s3">{data.sleepingArrangements.bedroom1}</div>
-              <div className="col s3">{data.sleepingArrangements.bedroom2}</div>
-              <div className="col s3">{data.sleepingArrangements.bedroom3}</div>
-              <div className="col s3">{data.sleepingArrangements.bedroom4}</div>
-              <div className="col s3">{data.sleepingArrangements.bedroom5}</div>
-              <div className="col s3">{data.sleepingArrangements.CommonSpaces}</div>
+            <div className="row">            
+                {data.sleepingArrangements.map((bedroom, index) => {
+                  return (
+                    <div className="col s3" key={index} id="sleepingArrangement">
+                      <div id="room">{bedroom.name}</div>
+                      {bedroom.value}
+                    </div>
+                  )
+                })}  
             </div>
           </div>
           <div className="section">
