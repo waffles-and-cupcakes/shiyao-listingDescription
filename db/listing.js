@@ -13,25 +13,13 @@ const listingSchema = new mongoose.Schema({
   numOfBaths: Number,
   hostName: String,
   hostPic: String,
-  amenities: {
-    basic: [{
-      type: String,
-    }],
-    facilities:[{
-      type: String,
-    }],
-    dining: String,
-    guestAccess: String,
-    bedBath:[{
-      type: String,
-    }],
-    safety:[{
-      type: String,
-    }],
-    notIncluded:[{
-      type: String,
+  amenities: [{
+    amenityType: String,
+    amenityValue: [{
+      name: String,
+      value: String
     }]
-  },
+  }],
   sleepingArrangements: [{
     name: String,
     value: String 

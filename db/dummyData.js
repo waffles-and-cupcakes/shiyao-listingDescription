@@ -14,15 +14,134 @@ var data = [{
   numOfBaths: 2,
   hostName: 'Sara',
   hostPic: 'http://res.cloudinary.com/dhhl9wiyn/image/upload/v1523492140/611750c5-9599-4d2c-b40f-cba5c8638644.jpg',
-  amenities: {
-    basic: ['Wifi', 'Laptop friendly workspace', 'Indoor fireplace', 'TV', 'Iron', 'Essentials', 'Heating', 'Air conditioning', 'Hot water'],
-    facilities:['Free parking on premises', 'Hot tub'],
-    dining: 'Kitchen',
-    guestAccess:'Lockbox',
-    bedBath:['Hangers', 'Hair dyer', 'Shampoo'],
-    safety:['Fire extinguisher', 'Carbon monoxide detector', 'Smoke detector', 'First aid kit'],
-    notIncluded:['Washer','Private entrance'],
-  },
+  amenities: [
+    {
+      amenityType: 'Basic',
+      amenityValue: [
+        {
+          name: 'Wifi',
+          value: 'Continuous access in the listing',
+        },
+        {
+          name: 'Laptop friendly workspace',
+          value: 'A table or desk with space for a laptop and a chair that’s comfortable to work in'
+        },
+        {
+          name: 'Essentials',
+          value: 'Towels, bed sheets, soap, and toilet paper'
+        },
+        {
+          name: 'TV',
+          value: ''
+        },
+        {
+          name: 'Iron',
+          value: ''
+        },
+        {
+          name: 'Heating',
+          value: 'Central heating or a heater in the listing'
+        },
+        {
+          name: 'Air conditioning',
+          value: ''
+        },
+        {
+          name: 'Hot water',
+          value: ''
+        }
+      ]
+    },
+
+    {
+      amenityType: 'Facilities',
+      amenityValue: [
+        {
+          name: 'Free parking on premises',
+          value: ''
+        },
+        {
+          name: 'Hot tub',
+          value: ''
+        }
+      ]
+    },
+
+    {
+      amenityType: 'Dining',
+      amenityValue: [
+        {
+          name: 'Kitchen',
+          value: ''
+        }
+      ]
+    },
+
+    {
+      amenityType: 'Guest access',
+      amenityValue: [
+        {
+          name: 'Lockbox',
+          value: ''
+        }
+      ]
+    },
+
+    {
+      amenityType: 'Bed & bath',
+      amenityValue: [
+        {
+          name: 'Hangers',
+          value: ''
+        },
+        {
+          name: 'Hair dryer',
+          value: ''
+        },
+        {
+          name: 'Shampoo',
+          value: ''
+        }
+      ]
+    },
+
+    {
+      amenityType: 'Safety',
+      amenityValue: [
+        {
+          name: 'Fire extinguisher',
+          value: ''
+        },
+        {
+          name: 'Carbon monoxide detector',
+          value: ''
+        },
+        {
+          name: 'Smoke detector',
+          value: ''
+        },
+        {
+          name: 'First aid kit',
+          value: ''
+        }
+      ]
+    },
+
+    {
+      amenityType: 'Not included',
+      amenityValue: [
+        {
+          name: 'Washer',
+          value: ''
+        },
+        {
+          name: 'Private entrance',
+          value: ''
+        }
+      ]
+    }
+  ],
+
     sleepingArrangements: [
     {
       name: 'Bedroom1', 
@@ -37,6 +156,7 @@ var data = [{
       value: '2 queen beds, 1 single bed'
     }
   ],
+
   accessibility: '',
   houseRules: {
     basicRules: ['No smoking', 'Not suitable for pets', 'No parties or events', 'Check-in is anytime after 3PM', 'Check out by 11AM', 'Self check-in with lockbox'],
@@ -62,15 +182,102 @@ var data = [{
   numOfBaths: 1,
   hostName: 'Gayle',
   hostPic: 'http://res.cloudinary.com/dhhl9wiyn/image/upload/v1523557652/original.jpg',
-  amenities: {
-    basic: ['Wifi', 'Essentials', 'Hot water'],
-    facilities:['Free parking on premises'],
-    dining: '',
-    guestAccess:'Host greets you',
-    bedBath:['Hair dyer', 'Shampoo'],
-    safety: [],
-    notIncluded:['Air conditioning','Heating', 'TV', 'Washer', 'Kitchen', 'Private entrance', 'Carbon monoxide detector', 'smoke detector'],
-  },
+  amenities: [
+    {
+      amenityType: 'Basic',
+      amenityValue: [
+        {
+          name: 'Wifi',
+          value: 'Continuous access in the listing',
+        },
+        {
+          name: 'Laptop friendly workspace',
+          value: 'A table or desk with space for a laptop and a chair that’s comfortable to work in'
+        },
+        {
+          name: 'Essentials',
+          value: 'Towels, bed sheets, soap, and toilet paper'
+        },
+        {
+          name: 'TV',
+          value: ''
+        },
+        {
+          name: 'Heating',
+          value: 'Central heating or a heater in the listing'
+        },
+      ]
+    },
+
+    {
+      amenityType: 'Facilities',
+      amenityValue: [
+        {
+          name: 'Free parking on premises',
+          value: ''
+        },
+      ]
+    },
+
+    {
+      amenityType: 'Dining',
+      amenityValue: [
+        {
+          name: 'Kitchen',
+          value: ''
+        }
+      ]
+    },
+
+    {
+      amenityType: 'Guest access',
+      amenityValue: [
+        {
+          name: 'Lockbox',
+          value: ''
+        }
+      ]
+    },
+
+    {
+      amenityType: 'Bed & bath',
+      amenityValue: [
+        {
+          name: 'Hair dryer',
+          value: ''
+        },
+        {
+          name: 'Shampoo',
+          value: ''
+        }
+      ]
+    },
+
+    {
+      amenityType: 'Safety',
+      amenityValue: [
+        {
+          name: 'Fire extinguisher',
+          value: ''
+        }
+      ]
+    },
+
+    {
+      amenityType: 'Not included',
+      amenityValue: [
+        {
+          name: 'Washer',
+          value: ''
+        },
+        {
+          name: 'Private entrance',
+          value: ''
+        }
+      ]
+    }
+  ],
+
   sleepingArrangements: [
     {
       name: 'Bedroom1', 

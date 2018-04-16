@@ -12,8 +12,6 @@ class App extends React.Component {
     super();
     this.state = {
       listingData: [],
-      aboutHome: [],
-      amenities: [],
       isLoaded: false
     };
   }
@@ -24,8 +22,6 @@ class App extends React.Component {
     .then((res) => {
       this.setState({
         listingData: res.data,
-        aboutHome: res.data.aboutHome,
-        amenities: res.data.amenities,
         isLoaded: true
       });
       console.log(this.state.listingData);
@@ -68,16 +64,15 @@ class App extends React.Component {
             </div>
           <div id="summary">{data.aboutHome.summary}</div>
             <div id="readmore"></div>
-            <AboutHome homeData={this.state.aboutHome} />
+            <AboutHome homeData={this.state.listingData} />
             <div className="link">Contact host</div>
           </div>
           <div className="section">
             <div className="subtitles">Amenities</div>
-            <div>{data.amenities.basic[0]}</div>
-            <div>{data.amenities.basic[1]}</div>
-            <div>{data.amenities.basic[2]}</div>
-            <div id="amenities"></div>
-            <Amenities homeData={this.state.amenities}/>
+            <div className="row">
+              <div>{data.amenities[0].amenityValue[0].name}</div>
+            </div>
+            <Amenities homeData={this.state.listingData}/>
           </div>
           <div className="section">
             <div className="subtitles">Sleeping arrangements</div>
