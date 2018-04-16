@@ -39,8 +39,6 @@ class App extends React.Component {
 
     const { isLoaded, listingData } = this.state;
     const data = listingData;
-    var elem = document.querySelector('.collapsible');
-    //var instance = M.Collapsible.init(elem);
 
     if (!isLoaded) {
       return (<div>Loading</div>);
@@ -96,15 +94,13 @@ class App extends React.Component {
           </div>
           <div className="section">
             <div className="subtitles">House rules</div>
-            <div>{data.houseRules.basicRules[0]}</div>
-            <div>{data.houseRules.basicRules[1]}</div>
-            <div>{data.houseRules.basicRules[2]}</div>
-            <div>{data.houseRules.basicRules[3]}</div>
-            <div>{data.houseRules.basicRules[4]}</div>
+            <div>{data.houseRules.basicRules.map((rule, index) => {
+              return <div key={index}>{rule}</div>
+            })}</div>
             <HouseRules houseRules={this.state.listingData}/>
           </div>
           <div className="subtitles">Cancellations</div>
-          <div id="cancel">{data.cancellationPolicy}</div>
+          <div>{data.cancellationPolicy}</div>
           <div className="link">Get Details</div>
         </div>
       );

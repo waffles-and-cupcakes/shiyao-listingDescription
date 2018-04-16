@@ -60,44 +60,36 @@ class AboutHome extends React.Component {
           contentLabel="AboutHome"
         >
         <a className="btn-floating btn-small waves-effect waves-light white" onClick={this.closeModal}><i className="material-icons cyan-text text-darken-4">clear</i></a>
-          <div className="summary">Summary 
-            <div>
+          <div className="smtitle">Summary </div>
+            <div className="para">
               {summaryArr.map((para, index) => {
-                return <div key={index}>{para}</div>;
+                return <p key={index}>{para}<br/></p>;
               })}
-            </div>
-          </div>
-          <div className="space">Space
-            <div>
+            </div>      
+          <div className="smtitle">Space</div>
+            <div className="para">
               {spaceArr.map((para, index) => {
-                return <div key={index}>{para}</div>;
+                return <p key={index}>{para}<br/></p>;
               })}
-            </div>
-
-          </div>
-          <div className="guestAccess">Guest access
-            <div>
+            </div>    
+          <div className="smtitle">Guest access</div>
+            <div className="para">
               {guestArr.map((para, index) => {
-                return <div key={index}>{para}</div>;
+                return <p key={index}>{para}<br/></p>;
               })}
-            </div>
-          </div>
-          <div className="interaction">Interaction with guests
-            <div>
+            </div>    
+          <div className="smtitle">Interaction with guests</div>
+            <div className="para">
               {interactionArr.map((para, index) => {
-                return <div key={index}>{para}</div>;
+                return <p key={index}>{para}<br/></p>;
               })}
-            </div>
-          </div>
-          <div className="othernotes">
-            Other notes
-            <div>
+            </div>    
+          <div className="smtitle">Other notes</div>
+            <div className="para">
               {otherNotesArr.map((para, index) => {
-                return <div key={index}>{para}</div>;
+                return <p key={index}>{para}<br/></p>;
               })}
-            </div>
-          </div>
-          
+            </div>       
         </Modal>
       </div>
     );
