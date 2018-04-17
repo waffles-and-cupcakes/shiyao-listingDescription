@@ -13,8 +13,8 @@ class App extends React.Component {
       listingData: [],
       isLoaded: false
     };
-
     this.renderAmenities = this.renderAmenities.bind(this);
+    this.renderSleepingArrangementsIcons = this.renderSleepingArrangementsIcons.bind(this);
   }
 
   componentDidMount(id) {
@@ -33,8 +33,9 @@ class App extends React.Component {
 
   renderAmenities() {
 
-    const { isLoaded, listingData } = this.state;
+    const { listingData } = this.state;
     const data = listingData;
+
     const iconAmenityMap = new Map();
     iconAmenityMap.set('Wifi', 'network_wifi');
     iconAmenityMap.set('Laptop friendly workspace', 'laptop_mac');
@@ -58,9 +59,40 @@ class App extends React.Component {
     return (
       <Columns columns="2">
         {amenityWithIcons.map((amenity, index) => {
-          return <div key={index}><i class="material-icons amenity-icon">{iconAmenityMap.get(amenity)}</i>{amenity}</div>
+          return <div key={index}><i className="material-icons amenity-icon">{iconAmenityMap.get(amenity)}</i>{amenity}</div>
         })}
       </Columns>
+    );
+  }
+
+  renderSleepingArrangementsIcons(str) {
+
+    const sleepingArrangementsIconMap = new Map();
+    sleepingArrangementsIconMap.set('queen bed', 'airline_seat_individual_suite');
+    sleepingArrangementsIconMap.set('king bed', 'hotel');
+    sleepingArrangementsIconMap.set('single bed', 'airline_seat_flat');
+    sleepingArrangementsIconMap.set('sofa bed', 'airline_seat_recline_extra');
+
+    var bedArr = str.split(', ');
+    var roomMap = bedArr.map((bed) => {
+      if (bed[bed.length - 1] === 's') {
+        return {number: parseInt(bed.slice(0, 1)), value: bed.slice(2, bed.length - 1)};
+      } else {
+        return {number: parseInt(bed.slice(0, 1)), value: bed.slice(2)};
+      }
+    });
+
+    var iconArr = [];
+    for (var i = 0; i < roomMap.length; i++) {
+      for (var j = 0; j < roomMap[i].number; j++) {
+        var ele = <i className="material-icons bed-icon">{sleepingArrangementsIconMap.get(roomMap[i].value)}</i>
+        iconArr.push(ele);
+      }
+    }
+    return (
+      <div>
+        {iconArr}
+      </div>
     );
   }
 
@@ -68,6 +100,7 @@ class App extends React.Component {
 
     const { isLoaded, listingData } = this.state;
     const data = listingData;
+    
 
     if (!isLoaded) {
       return (<div>Loading</div>);
@@ -111,6 +144,7 @@ class App extends React.Component {
                 {data.sleepingArrangements.map((bedroom, index) => {
                   return (
                     <div className="col s3" key={index} id="sleepingArrangement">
+                      <div>{this.renderSleepingArrangementsIcons(bedroom.value)}</div>
                       <div id="room">{bedroom.name}</div>
                       {bedroom.value}
                     </div>
@@ -126,8 +160,9 @@ class App extends React.Component {
             <HouseRules houseRules={this.state.listingData}/>
           </div>
           <div className="subtitles">Cancellations</div>
-          <div>{data.cancellationPolicy}</div>
-          <div className="link">Get Details</div>
+          <div>{data.cancellationPolicy.policyType}</div><br/>
+          <div>{data.cancellationPolicy.description}</div>
+         <div className="link"><br/><a className="link" target="_blank" href={data.cancellationPolicy.link}>Get Details</a></div>
         </div>
       );
     }

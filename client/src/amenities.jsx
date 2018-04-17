@@ -45,11 +45,11 @@ class Amenities extends React.Component {
     return this.props.homeData.amenities.map((type, index) => {
       return (
         <div key={index}>
-          <div id="amenityType">{type.amenityType}</div>
+          <div className="amenityType">{type.amenityType}</div>
           { type.amenityValue.map((amenity, index) => {
               return (
                 <div className="section" key={index}>
-                  <div id="amenityName">{amenity.name}</div>
+                  <div className="amenityName">{amenity.name}</div>
                   <div>{amenity.value}</div>
                 </div>
               )
@@ -76,6 +76,12 @@ class Amenities extends React.Component {
           <div id="amenityTitle">Amenities</div>
           <div>
             {this.renderAmenities()}
+          </div>
+          <div>
+            <div className="amenityType">Not included</div>
+            {this.props.homeData.notIncludedAmenities.map((amenity) => {
+              return <div id="notIncludedAmenities" className="section">{amenity}</div>
+            })}
           </div>       
         </Modal>
       </div>

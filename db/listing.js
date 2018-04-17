@@ -20,6 +20,9 @@ const listingSchema = new mongoose.Schema({
       value: String
     }]
   }],
+  notIncludedAmenities: [{
+    type: String,
+  }],
   sleepingArrangements: [{
     name: String,
     value: String 
@@ -33,7 +36,11 @@ const listingSchema = new mongoose.Schema({
     }],
     textBody: String,
   },
-  cancellationPolicy: String,
+  cancellationPolicy: {
+    policyType: String,
+    description: String,
+    link: String,
+  },
   aboutHome: {
     summary: String,
     space: String,
