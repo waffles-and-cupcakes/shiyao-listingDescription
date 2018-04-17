@@ -22,10 +22,11 @@
     "nodemon": "^1.17.3",
     "path": "^0.12.7",
     "react": "^16.3.1",
+    "react-addons-css-transition-group": "^15.6.2",
+    "react-columns": "^1.2.0",
     "react-dom": "^16.3.1",
     "react-modal": "^3.3.2",
-    "reactjs-popup": "^1.0.7",
-    "underscore": "^1.8.3"
+    "reactjs-popup": "^1.0.7"
   },
   "devDependencies": {
     "babel": "^6.23.0",

@@ -1,10 +1,9 @@
 import React from 'react';
 import ReactDOM from 'react-dom';
-import $ from 'jquery';
 import axios from 'axios';
+import Columns from 'react-columns';
 import AboutHome from './aboutHome.jsx';
 import Amenities from './amenities.jsx';
-import ReactCSSTransitionGroup from 'react-addons-css-transition-group';
 import HouseRules from './houseRules.jsx';
 
 class App extends React.Component {
@@ -14,6 +13,8 @@ class App extends React.Component {
       listingData: [],
       isLoaded: false
     };
+
+    this.renderAmenities = this.renderAmenities.bind(this);
   }
 
   componentDidMount(id) {
@@ -24,11 +25,43 @@ class App extends React.Component {
         listingData: res.data,
         isLoaded: true
       });
-      console.log(this.state.listingData);
     })
     .catch((error) => {
       console.log(error);
     })
+  }
+
+  renderAmenities() {
+
+    const { isLoaded, listingData } = this.state;
+    const data = listingData;
+    const iconAmenityMap = new Map();
+    iconAmenityMap.set('Wifi', 'network_wifi');
+    iconAmenityMap.set('Laptop friendly workspace', 'laptop_mac');
+    iconAmenityMap.set('Free parking on premises', 'local_parking');
+    iconAmenityMap.set('Kitchen', 'local_dining');
+    iconAmenityMap.set('Hot tub', 'hot_tub');
+    iconAmenityMap.set('TV', 'live_tv');
+
+    const amenityWithIcons = [];
+    data.amenities.forEach((type) => {
+      type.amenityValue.forEach((amenity) => {
+        if (iconAmenityMap.has(amenity.name)) {
+          amenityWithIcons.push(amenity.name);
+          if (amenityWithIcons.length === 6) {
+            return;
+          }
+        } 
+      });
+    });
+
+    return (
+      <Columns columns="2">
+        {amenityWithIcons.map((amenity, index) => {
+          return <div key={index}><i class="material-icons amenity-icon">{iconAmenityMap.get(amenity)}</i>{amenity}</div>
+        })}
+      </Columns>
+    );
   }
 
   render() {
@@ -60,7 +93,7 @@ class App extends React.Component {
             <div className="stats">
               <i className="material-icons icons">people</i><span className="roomstats">{data.maxNumOfGuests} guests</span>
               <i className="material-icons icons">hotel</i><span className="roomstats">{data.numOfBeds} beds</span>
-              <i className="material-icons icons">wc</i><span className="roomstats">{data.numOfBaths} baths</span>
+              <i className="material-icons icons">hot_tub</i><span className="roomstats">{data.numOfBaths} baths</span>
             </div>
           <div id="summary">{data.aboutHome.summary}</div>
             <div id="readmore"></div>
@@ -69,9 +102,7 @@ class App extends React.Component {
           </div>
           <div className="section">
             <div className="subtitles">Amenities</div>
-            <div className="row">
-              <div><i class="material-icons">network_wifi</i>{data.amenities[0].amenityValue[0].name}</div>
-            </div>
+            <div>{this.renderAmenities()}</div>
             <Amenities homeData={this.state.listingData}/>
           </div>
           <div className="section">

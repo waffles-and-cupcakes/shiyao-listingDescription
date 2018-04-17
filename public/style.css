@@ -95,6 +95,10 @@ img {
   margin-bottom: 20px;
 }
 
+.amenity-icon {
+  padding: 10px;
+}
+
 .para {
   border-bottom: solid;
   border-width: .5px;
