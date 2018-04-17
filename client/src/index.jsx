@@ -70,7 +70,7 @@ class App extends React.Component {
           <div className="section">
             <div className="subtitles">Amenities</div>
             <div className="row">
-              <div>{data.amenities[0].amenityValue[0].name}</div>
+              <div><i class="material-icons">network_wifi</i>{data.amenities[0].amenityValue[0].name}</div>
             </div>
             <Amenities homeData={this.state.listingData}/>
           </div>

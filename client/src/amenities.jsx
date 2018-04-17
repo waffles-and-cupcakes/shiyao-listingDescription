@@ -45,12 +45,11 @@ class Amenities extends React.Component {
     return this.props.homeData.amenities.map((type, index) => {
       return (
         <div key={index}>
-          <div className="smtitle">{type.amenityType}</div> 
-          {
-            type.amenityValue.map((amenity, index) => {
+          <div id="amenityType">{type.amenityType}</div>
+          { type.amenityValue.map((amenity, index) => {
               return (
-                <div key={index}>
-                  <div>{amenity.name}</div>
+                <div className="section" key={index}>
+                  <div id="amenityName">{amenity.name}</div>
                   <div>{amenity.value}</div>
                 </div>
               )
@@ -74,6 +73,7 @@ class Amenities extends React.Component {
           contentLabel="Example Modal"
         >
         <a className="btn-floating btn-small waves-effect waves-light white" onClick={this.closeModal}><i className="material-icons cyan-text text-darken-4">clear</i></a>
+          <div id="amenityTitle">Amenities</div>
           <div>
             {this.renderAmenities()}
           </div>       
