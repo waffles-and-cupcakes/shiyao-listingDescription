@@ -43,11 +43,11 @@ class AboutHome extends React.Component {
 
   render() {
 
-    var summaryArr = this.props.homeData.aboutHome.summary.split('     ');
-    var spaceArr = this.props.homeData.aboutHome.space.split('     ');
-    var guestArr = this.props.homeData.aboutHome.guestAccess.split('     ');
-    var interactionArr = this.props.homeData.aboutHome.interactionWithGuests.split('     ');
-    var otherNotesArr = this.props.homeData.aboutHome.otherNotes.split('     ');
+    var summaryArr = this.props.homeData.aboutHome.summary.split('\n \r');
+    var spaceArr = this.props.homeData.aboutHome.space.split('\n \r');
+    var guestArr = this.props.homeData.aboutHome.guestAccess.split('\n \r');
+    var interactionArr = this.props.homeData.aboutHome.interactionWithGuests.split('\n \r');
+    var otherNotesArr = this.props.homeData.aboutHome.otherNotes.split('\n \r');
 
     return (
       <div>

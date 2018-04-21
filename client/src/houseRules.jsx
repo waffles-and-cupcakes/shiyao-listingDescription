@@ -15,7 +15,7 @@ class HouseRules extends React.Component {
   }
 
   slideBox() {
-    var ruleArr = this.props.houseRules.houseRules.textBody.split('     ');
+    var ruleArr = this.props.houseRules.houseRules.textBody.split('\n \r');
     return (
       <div id="box" key="key">
         {ruleArr.map((para, index) => {return <p key={index}>{para}<br/></p>})}

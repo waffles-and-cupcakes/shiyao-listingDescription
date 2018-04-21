@@ -17,9 +17,10 @@ class App extends React.Component {
     this.renderSleepingArrangementsIcons = this.renderSleepingArrangementsIcons.bind(this);
   }
 
-  componentDidMount(id) {
-    id = 1;
-    axios.get(`/rooms/${id}/details`)
+  componentDidMount() {
+    var link = window.location.href;
+    var id = 30;
+    axios.get(`/rooms/${id}/data`)
     .then((res) => {
       this.setState({
         listingData: res.data,
