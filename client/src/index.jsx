@@ -1,6 +1,7 @@
 import React from 'react';
 import ReactDOM from 'react-dom';
 import axios from 'axios';
+import { BrowseRouter as Router, Route, Link } from 'react-router-dom';
 import Columns from 'react-columns';
 import AboutHome from './aboutHome.jsx';
 import Amenities from './amenities.jsx';
@@ -11,16 +12,15 @@ class App extends React.Component {
     super();
     this.state = {
       listingData: [],
-      isLoaded: false
+      isLoaded: false,
     };
     this.renderAmenities = this.renderAmenities.bind(this);
     this.renderSleepingArrangementsIcons = this.renderSleepingArrangementsIcons.bind(this);
   }
 
   componentDidMount() {
-    var link = window.location.href;
-    var id = 30;
-    axios.get(`/rooms/${id}/data`)
+    var id = 1;
+    axios.get(`http://localhost:3003/rooms/${id}/data`)
     .then((res) => {
       this.setState({
         listingData: res.data,
