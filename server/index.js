@@ -1,11 +1,11 @@
 const express = require('express');
-const app = express();
 const bodyParser = require('body-parser');
-const db = require('../db/index.js');
-const Listing = require('../db/listing.js');
 const path = require('path');
 const cors = require('cors');
+const db = require('../db/index.js');
+const Listing = require('../db/listing.js');
 
+const app = express();
 const PORT = 3003;
 
 app.use(cors());

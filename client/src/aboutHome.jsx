@@ -19,9 +19,8 @@ const customStyles = {
 class AboutHome extends React.Component {
   constructor(props) {
     super(props);
-
     this.state = {
-      modalIsOpen: false
+      modalIsOpen: false,
     };
 
     this.openModal = this.openModal.bind(this);

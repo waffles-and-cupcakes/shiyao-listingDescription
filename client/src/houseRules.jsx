@@ -14,7 +14,7 @@ class HouseRules extends React.Component {
     this.setState({ isShown: !this.state.isShown })
   }
 
-  slideBox() {
+  showSlideBox() {
     var ruleArr = this.props.houseRules.houseRules.textBody.split('\n \r');
     return (
       <div id="box" key="key">
@@ -24,9 +24,9 @@ class HouseRules extends React.Component {
   }
 
   render() {
-    let text = this.state.isShown ? 'Hide' : 'Read all rules';
-    let icon = this.state.isShown ? 'keyboard_arrow_up' : 'keyboard_arrow_down';
-    let component = this.state.isShown ? this.slideBox() : '';
+    var text = this.state.isShown ? 'Hide' : 'Read all rules';
+    var icon = this.state.isShown ? 'keyboard_arrow_up' : 'keyboard_arrow_down';
+    var component = this.state.isShown ? this.showSlideBox() : '';
 
     return (
       <div>

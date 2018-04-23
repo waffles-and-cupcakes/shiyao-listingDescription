@@ -1,7 +1,6 @@
 import React from 'react';
 import ReactDOM from 'react-dom';
 import axios from 'axios';
-import { BrowseRouter as Router, Route, Link } from 'react-router-dom';
 import Columns from 'react-columns';
 import AboutHome from './aboutHome.jsx';
 import Amenities from './amenities.jsx';
@@ -14,7 +13,7 @@ class App extends React.Component {
       listingData: [],
       isLoaded: false,
     };
-    this.renderAmenities = this.renderAmenities.bind(this);
+    this.renderAmenitiesIcons = this.renderAmenitiesIcons.bind(this);
     this.renderSleepingArrangementsIcons = this.renderSleepingArrangementsIcons.bind(this);
   }
 
@@ -29,14 +28,12 @@ class App extends React.Component {
     })
     .catch((error) => {
       console.log(error);
-    })
+    });
   }
 
-  renderAmenities() {
+  renderAmenitiesIcons() {
 
-    const { listingData } = this.state;
-    const data = listingData;
-
+    const data = this.state.listingData;
     const iconAmenityMap = new Map();
     iconAmenityMap.set('Wifi', 'network_wifi');
     iconAmenityMap.set('Laptop friendly workspace', 'laptop_mac');
@@ -45,12 +42,12 @@ class App extends React.Component {
     iconAmenityMap.set('Hot tub', 'hot_tub');
     iconAmenityMap.set('TV', 'live_tv');
 
-    const amenityWithIcons = [];
+    const amenitiesWithIcons = [];
     data.amenities.forEach((type) => {
       type.amenityValue.forEach((amenity) => {
         if (iconAmenityMap.has(amenity.name)) {
-          amenityWithIcons.push(amenity.name);
-          if (amenityWithIcons.length === 6) {
+          amenitiesWithIcons.push(amenity.name);
+          if (amenitiesWithIcons.length === 6) {
             return;
           }
         } 
@@ -59,7 +56,7 @@ class App extends React.Component {
 
     return (
       <Columns columns="2">
-        {amenityWithIcons.map((amenity, index) => {
+        {amenitiesWithIcons.map((amenity, index) => {
           return <div key={index}><i className="material-icons amenity-icon">{iconAmenityMap.get(amenity)}</i>{amenity}</div>
         })}
       </Columns>
@@ -99,11 +96,8 @@ class App extends React.Component {
 
   render() {
 
-    const { isLoaded, listingData } = this.state;
-    const data = listingData;
-    
-
-    if (!isLoaded) {
+    const data = this.state.listingData;
+    if (!this.state.isLoaded) {
       return (<div>Loading</div>);
     } else {
       return (
@@ -114,9 +108,7 @@ class App extends React.Component {
             </div>
             <div id="host">
               <img src={data.hostPic} alt="Avatar"></img>
-              <div>
-                {data.hostName}
-            </div>
+              <div>{data.hostName}</div>
             </div>
             <div id="title">
               {data.name}
@@ -131,13 +123,13 @@ class App extends React.Component {
             </div>
           <div id="summary">{data.aboutHome.summary}</div>
             <div id="readmore"></div>
-            <AboutHome homeData={this.state.listingData} />
+              <AboutHome homeData={data} />
             <div className="link">Contact host</div>
           </div>
           <div className="section">
             <div className="subtitles">Amenities</div>
-            <div>{this.renderAmenities()}</div>
-            <Amenities homeData={this.state.listingData}/>
+            <div>{this.renderAmenitiesIcons()}</div>
+            <Amenities homeData={data} />
           </div>
           <div className="section">
             <div className="subtitles">Sleeping arrangements</div>
@@ -149,7 +141,7 @@ class App extends React.Component {
                       <div id="room">{bedroom.name}</div>
                       {bedroom.value}
                     </div>
-                  )
+                  );
                 })}  
             </div>
           </div>
@@ -158,7 +150,7 @@ class App extends React.Component {
             <div>{data.houseRules.basicRules.map((rule, index) => {
               return <div key={index}>{rule}</div>
             })}</div>
-            <HouseRules houseRules={this.state.listingData}/>
+            <HouseRules houseRules={data}/>
           </div>
           <div className="subtitles">Cancellations</div>
           <div>{data.cancellationPolicy.policyType}</div><br/>

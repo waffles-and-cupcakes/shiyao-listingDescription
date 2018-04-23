@@ -78,7 +78,7 @@ class Amenities extends React.Component {
             {this.renderAmenities()}
           </div>
           <div>
-            <div className="amenityType">Not included</div>
+          <div className="amenityType">Not included</div>
             {this.props.homeData.notIncludedAmenities.map((amenity) => {
               return <div id="notIncludedAmenities" className="section">{amenity}</div>
             })}
