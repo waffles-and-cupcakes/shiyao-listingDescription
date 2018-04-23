@@ -3,13 +3,16 @@ const app = express();
 const bodyParser = require('body-parser');
 const db = require('../db/index.js');
 const Listing = require('../db/listing.js');
+const path = require('path');
+const cors = require('cors');
 
 const PORT = 3003;
 
-app.use(express.static('../public'));
-app.use(bodyParser.urlencoded());
+app.use(cors());
+app.use('/rooms/1/details', express.static('../public'));
+app.use(bodyParser.urlencoded({extended: false}));
 
-app.get('/rooms/:id/details', (req, res) => {
+app.get('/rooms/:id/data', (req, res) => {
   var id = req.params.id;
   Listing.findOne({_id: id}).exec((err, listings) => {
     if (err) {

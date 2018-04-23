@@ -13,33 +13,20 @@ const listingSchema = new mongoose.Schema({
   numOfBaths: Number,
   hostName: String,
   hostPic: String,
-  amenities: {
-    basic: [{
-      type: String,
-    }],
-    facilities:[{
-      type: String,
-    }],
-    dining: String,
-    guestAccess: String,
-    bedBath:[{
-      type: String,
-    }],
-    safety:[{
-      type: String,
-    }],
-    notIncluded:[{
-      type: String,
+  amenities: [{
+    amenityType: String,
+    amenityValue: [{
+      name: String,
+      value: String
     }]
-  },
-  sleepingArrangements: {
-    bedroom1: String,
-    bedroom2: String,
-    bedroom3: String,
-    bedroom4: String,
-    bedroom5: String,
-    CommonSpaces: String,
-  },
+  }],
+  notIncludedAmenities: [{
+    type: String,
+  }],
+  sleepingArrangements: [{
+    name: String,
+    value: String 
+  }],
   accessibility: [{
     type: String,
   }],
@@ -49,7 +36,11 @@ const listingSchema = new mongoose.Schema({
     }],
     textBody: String,
   },
-  cancellationPolicy: String,
+  cancellationPolicy: {
+    policyType: String,
+    description: String,
+    link: String,
+  },
   aboutHome: {
     summary: String,
     space: String,

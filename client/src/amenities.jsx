@@ -25,8 +25,8 @@ class Amenities extends React.Component {
     };
 
     this.openModal = this.openModal.bind(this);
-    //this.afterOpenModal = this.afterOpenModal.bind(this);
     this.closeModal = this.closeModal.bind(this);
+    this.renderAmenities = this.renderAmenities.bind(this);
   }
 
   componentDidMount() {
@@ -39,6 +39,25 @@ class Amenities extends React.Component {
 
   closeModal() {
     this.setState({modalIsOpen: false});
+  }
+
+  renderAmenities() {
+    return this.props.homeData.amenities.map((type, index) => {
+      return (
+        <div key={index}>
+          <div className="amenityType">{type.amenityType}</div>
+          { type.amenityValue.map((amenity, index) => {
+              return (
+                <div className="section" key={index}>
+                  <div className="amenityName">{amenity.name}</div>
+                  <div>{amenity.value}</div>
+                </div>
+              )
+            })
+          }
+        </div>
+      )   
+    })
   }
 
   render() {
@@ -54,48 +73,16 @@ class Amenities extends React.Component {
           contentLabel="Example Modal"
         >
         <a className="btn-floating btn-small waves-effect waves-light white" onClick={this.closeModal}><i className="material-icons cyan-text text-darken-4">clear</i></a>
-          <div id="basic">
-            Basic
-            {this.props.homeData.basic.map((amenity, index) => {
-              return <div key={index}>{amenity}</div>
-            })}
-          </div>
-          <div id="facilities">
-            Facilities
-            {this.props.homeData.facilities.map((amenity, index) => {
-              return <div key={index}>{amenity}</div>
-            })}
+          <div id="amenityTitle">Amenities</div>
+          <div>
+            {this.renderAmenities()}
           </div>
           <div>
-            Dining
-            <div>
-              {this.props.homeData.dining}
-            </div>
-          </div>
-          <div>
-            Guest access
-            <div>
-              {this.props.homeData.guestAccess}
-            </div>
-          </div>
-          <div>
-            Bed & bath
-            {this.props.homeData.bedBath.map((amenity, index) => {
-              return <div key={index}>{amenity}</div>
+            <div className="amenityType">Not included</div>
+            {this.props.homeData.notIncludedAmenities.map((amenity) => {
+              return <div id="notIncludedAmenities" className="section">{amenity}</div>
             })}
-          </div>
-          <div>
-            Safety
-            {this.props.homeData.safety.map((amenity, index) => {
-              return <div key={index}>{amenity}</div>
-            })}
-          </div>
-          <div>
-            Not included
-            {this.props.homeData.notIncluded.map((amenity, index) => {
-              return <div key={index}>{amenity}</div>
-            })}
-          </div>        
+          </div>       
         </Modal>
       </div>
     );

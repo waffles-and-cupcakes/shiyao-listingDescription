@@ -1,48 +1,114 @@
 import React from 'react';
 import ReactDOM from 'react-dom';
-import $ from 'jquery';
 import axios from 'axios';
+import { BrowseRouter as Router, Route, Link } from 'react-router-dom';
+import Columns from 'react-columns';
 import AboutHome from './aboutHome.jsx';
 import Amenities from './amenities.jsx';
+import HouseRules from './houseRules.jsx';
 
 class App extends React.Component {
   constructor() {
     super();
     this.state = {
       listingData: [],
-      aboutHome: [],
-      amenities: [],
-      isLoaded: false
+      isLoaded: false,
     };
+    this.renderAmenities = this.renderAmenities.bind(this);
+    this.renderSleepingArrangementsIcons = this.renderSleepingArrangementsIcons.bind(this);
   }
 
-  componentDidMount(id) {
-    id = 1;
-    axios.get(`/rooms/${id}/details`)
+  componentDidMount() {
+    var id = 1;
+    axios.get(`http://localhost:3003/rooms/${id}/data`)
     .then((res) => {
       this.setState({
         listingData: res.data,
-        aboutHome: res.data.aboutHome,
-        amenities: res.data.amenities,
         isLoaded: true
       });
-      console.log(this.state.listingData);
     })
     .catch((error) => {
       console.log(error);
     })
   }
 
+  renderAmenities() {
+
+    const { listingData } = this.state;
+    const data = listingData;
+
+    const iconAmenityMap = new Map();
+    iconAmenityMap.set('Wifi', 'network_wifi');
+    iconAmenityMap.set('Laptop friendly workspace', 'laptop_mac');
+    iconAmenityMap.set('Free parking on premises', 'local_parking');
+    iconAmenityMap.set('Kitchen', 'local_dining');
+    iconAmenityMap.set('Hot tub', 'hot_tub');
+    iconAmenityMap.set('TV', 'live_tv');
+
+    const amenityWithIcons = [];
+    data.amenities.forEach((type) => {
+      type.amenityValue.forEach((amenity) => {
+        if (iconAmenityMap.has(amenity.name)) {
+          amenityWithIcons.push(amenity.name);
+          if (amenityWithIcons.length === 6) {
+            return;
+          }
+        } 
+      });
+    });
+
+    return (
+      <Columns columns="2">
+        {amenityWithIcons.map((amenity, index) => {
+          return <div key={index}><i className="material-icons amenity-icon">{iconAmenityMap.get(amenity)}</i>{amenity}</div>
+        })}
+      </Columns>
+    );
+  }
+
+  renderSleepingArrangementsIcons(str) {
+
+    const sleepingArrangementsIconMap = new Map();
+    sleepingArrangementsIconMap.set('queen bed', 'airline_seat_individual_suite');
+    sleepingArrangementsIconMap.set('king bed', 'hotel');
+    sleepingArrangementsIconMap.set('single bed', 'airline_seat_flat');
+    sleepingArrangementsIconMap.set('sofa bed', 'airline_seat_recline_extra');
+
+    var bedArr = str.split(', ');
+    var roomMap = bedArr.map((bed) => {
+      if (bed[bed.length - 1] === 's') {
+        return {number: parseInt(bed.slice(0, 1)), value: bed.slice(2, bed.length - 1)};
+      } else {
+        return {number: parseInt(bed.slice(0, 1)), value: bed.slice(2)};
+      }
+    });
+
+    var iconArr = [];
+    for (var i = 0; i < roomMap.length; i++) {
+      for (var j = 0; j < roomMap[i].number; j++) {
+        var ele = <i className="material-icons bed-icon">{sleepingArrangementsIconMap.get(roomMap[i].value)}</i>
+        iconArr.push(ele);
+      }
+    }
+    return (
+      <div>
+        {iconArr}
+      </div>
+    );
+  }
+
   render() {
 
     const { isLoaded, listingData } = this.state;
     const data = listingData;
+    
 
     if (!isLoaded) {
       return (<div>Loading</div>);
     } else {
       return (
         <div className="container">
+          <div className="section">
             <div id="listingtype">
               {data.type.toUpperCase()}
             </div>
@@ -61,41 +127,43 @@ class App extends React.Component {
             <div className="stats">
               <i className="material-icons icons">people</i><span className="roomstats">{data.maxNumOfGuests} guests</span>
               <i className="material-icons icons">hotel</i><span className="roomstats">{data.numOfBeds} beds</span>
-              <i className="material-icons icons">wc</i><span className="roomstats">{data.numOfBaths} baths</span>
+              <i className="material-icons icons">hot_tub</i><span className="roomstats">{data.numOfBaths} baths</span>
             </div>
           <div id="summary">{data.aboutHome.summary}</div>
             <div id="readmore"></div>
-            <AboutHome homeData={this.state.aboutHome} />
+            <AboutHome homeData={this.state.listingData} />
             <div className="link">Contact host</div>
-          <div>
+          </div>
+          <div className="section">
             <div className="subtitles">Amenities</div>
-            <div>{data.amenities.basic[0]}</div>
-            <div>{data.amenities.basic[1]}</div>
-            <div>{data.amenities.basic[2]}</div>
-            <div id="amenities"></div>
-            <Amenities homeData={this.state.amenities}/>
+            <div>{this.renderAmenities()}</div>
+            <Amenities homeData={this.state.listingData}/>
           </div>
-          <div>
+          <div className="section">
             <div className="subtitles">Sleeping arrangements</div>
-            {data.sleepingArrangements.bedroom1}
-            {data.sleepingArrangements.bedroom2}
-            {data.sleepingArrangements.bedroom3}
-            {data.sleepingArrangements.bedroom4}
-            {data.sleepingArrangements.bedroom5}
-            {data.sleepingArrangements.CommonSpaces}
+            <div className="row">            
+                {data.sleepingArrangements.map((bedroom, index) => {
+                  return (
+                    <div className="col s3" key={index} id="sleepingArrangement">
+                      <div>{this.renderSleepingArrangementsIcons(bedroom.value)}</div>
+                      <div id="room">{bedroom.name}</div>
+                      {bedroom.value}
+                    </div>
+                  )
+                })}  
+            </div>
           </div>
-          <div>
+          <div className="section">
             <div className="subtitles">House rules</div>
-            <div>{data.houseRules.basicRules[0]}</div>
-            <div>{data.houseRules.basicRules[1]}</div>
-            <div>{data.houseRules.basicRules[2]}</div>
-            <div>{data.houseRules.basicRules[3]}</div>
-            <div>{data.houseRules.basicRules[4]}</div>
+            <div>{data.houseRules.basicRules.map((rule, index) => {
+              return <div key={index}>{rule}</div>
+            })}</div>
+            <HouseRules houseRules={this.state.listingData}/>
           </div>
-          <div id="readrules" className="link">Read all rules <i className="material-icons icons">keyboard_arrow_down</i></div>
           <div className="subtitles">Cancellations</div>
-          <div id="cancel">{data.cancellationPolicy}</div>
-          <div className="link">Get Details</div>
+          <div>{data.cancellationPolicy.policyType}</div><br/>
+          <div>{data.cancellationPolicy.description}</div>
+         <div className="link"><br/><a className="link" target="_blank" href={data.cancellationPolicy.link}>Get Details</a></div>
         </div>
       );
     }

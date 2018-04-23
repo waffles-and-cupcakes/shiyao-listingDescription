@@ -17,15 +17,14 @@ const customStyles = {
 };
 
 class AboutHome extends React.Component {
-  constructor() {
-    super();
+  constructor(props) {
+    super(props);
 
     this.state = {
       modalIsOpen: false
     };
 
     this.openModal = this.openModal.bind(this);
-    //this.afterOpenModal = this.afterOpenModal.bind(this);
     this.closeModal = this.closeModal.bind(this);
   }
 
@@ -43,61 +42,53 @@ class AboutHome extends React.Component {
 
   render() {
 
-    var summaryArr = this.props.homeData.summary.split('     ');
-    var spaceArr = this.props.homeData.space.split('     ');
-    var guestArr = this.props.homeData.guestAccess.split('     ');
-    var interactionArr = this.props.homeData.interactionWithGuests.split('     ');
-    var otherNotesArr = this.props.homeData.otherNotes.split('     ');
+    var summaryArr = this.props.homeData.aboutHome.summary.split('\n \r');
+    var spaceArr = this.props.homeData.aboutHome.space.split('\n \r');
+    var guestArr = this.props.homeData.aboutHome.guestAccess.split('\n \r');
+    var interactionArr = this.props.homeData.aboutHome.interactionWithGuests.split('\n \r');
+    var otherNotesArr = this.props.homeData.aboutHome.otherNotes.split('\n \r');
 
     return (
       <div>
-        <div id="readmorehehe"><span className="link" onClick={this.openModal}>Read more about this home</span></div>
+        <div><span className="link" onClick={this.openModal}>Read more about this home</span></div>
         <Modal
           isOpen={this.state.modalIsOpen}
           onAfterOpen={this.afterOpenModal}
           onRequestClose={this.closeModal}
           style={customStyles}
-          contentLabel="Example Modal"
+          contentLabel="AboutHome"
         >
         <a className="btn-floating btn-small waves-effect waves-light white" onClick={this.closeModal}><i className="material-icons cyan-text text-darken-4">clear</i></a>
-          <div className="summary">Summary 
-            <div>
+          <div className="smtitle">Summary </div>
+            <div className="para">
               {summaryArr.map((para, index) => {
-                return <div key={index}>{para}</div>;
+                return <p key={index}>{para}<br/></p>;
               })}
-            </div>
-          </div>
-          <div className="space">Space
-            <div>
+            </div>      
+          <div className="smtitle">Space</div>
+            <div className="para">
               {spaceArr.map((para, index) => {
-                return <div key={index}>{para}</div>;
+                return <p key={index}>{para}<br/></p>;
               })}
-            </div>
-
-          </div>
-          <div className="guestAccess">Guest access
-            <div>
+            </div>    
+          <div className="smtitle">Guest access</div>
+            <div className="para">
               {guestArr.map((para, index) => {
-                return <div key={index}>{para}</div>;
+                return <p key={index}>{para}<br/></p>;
               })}
-            </div>
-          </div>
-          <div className="interaction">Interaction with guests
-            <div>
+            </div>    
+          <div className="smtitle">Interaction with guests</div>
+            <div className="para">
               {interactionArr.map((para, index) => {
-                return <div key={index}>{para}</div>;
+                return <p key={index}>{para}<br/></p>;
               })}
-            </div>
-          </div>
-          <div className="othernotes">
-            Other notes
-            <div>
+            </div>    
+          <div className="smtitle">Other notes</div>
+            <div className="para">
               {otherNotesArr.map((para, index) => {
-                return <div key={index}>{para}</div>;
+                return <p key={index}>{para}<br/></p>;
               })}
-            </div>
-          </div>
-          
+            </div>       
         </Modal>
       </div>
     );
