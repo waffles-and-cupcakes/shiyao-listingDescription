@@ -211,11 +211,6 @@ var removeDuplicateAmenitiesValues = function(sample) {
       }
     }
     sample.amenities[i].amenityValue = newAmenityValueArr;
-    // if (newAmenityValueArr.length !== 0) {
-    //   sample.amenities[i].amenityValue = newAmenityValueArr;  
-    // } else {
-    //   delete sample.amenities[i];
-    // }  
   }
 }
 
