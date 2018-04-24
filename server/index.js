@@ -9,10 +9,10 @@ const cors = require('cors');
 const PORT = 3003;
 
 app.use(cors());
-app.use('/rooms/1/details', express.static('../public'));
+app.use('/rooms/:id', express.static('../public'));
 app.use(bodyParser.urlencoded({extended: false}));
 
-app.get('/rooms/:id/data', (req, res) => {
+app.get('/rooms/details/:id', (req, res) => {
   var id = req.params.id;
   Listing.findOne({_id: id}).exec((err, listings) => {
     if (err) {

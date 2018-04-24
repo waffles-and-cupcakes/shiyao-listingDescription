@@ -1,7 +1,6 @@
 import React from 'react';
 import ReactDOM from 'react-dom';
 import axios from 'axios';
-import { BrowseRouter as Router, Route, Link } from 'react-router-dom';
 import Columns from 'react-columns';
 import AboutHome from './aboutHome.jsx';
 import Amenities from './amenities.jsx';
@@ -19,8 +18,9 @@ class App extends React.Component {
   }
 
   componentDidMount() {
-    var id = 1;
-    axios.get(`http://localhost:3003/rooms/${id}/data`)
+    var id = window.location.pathname.split('/')[2];
+    console.log(id);
+    axios.get(`http://localhost:3003/rooms/details/${id}`)
     .then((res) => {
       this.setState({
         listingData: res.data,
