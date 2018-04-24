@@ -170,5 +170,5 @@ class App extends React.Component {
   }
 }
 
-ReactDOM.render(<App />, document.getElementById('listingDetails'));
+ReactDOM.render(<App />, document.getElementById('details'));
 
