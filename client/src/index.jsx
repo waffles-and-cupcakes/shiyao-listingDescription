@@ -113,7 +113,7 @@ class App extends React.Component {
               {data.type.toUpperCase()}
             </div>
             <div id="host">
-              <img src={data.hostPic} alt="Avatar"></img>
+              <img id="host-pic" src={data.hostPic} alt="Avatar"></img>
               <div>
                 {data.hostName}
             </div>
