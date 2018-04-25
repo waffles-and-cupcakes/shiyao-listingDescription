@@ -178,7 +178,7 @@ const homeData = {
 describe('<AboutHome />', () => {
   it('renders one <AboutHome /> components', () => {
     const wrapper = shallow(<AboutHome homeData={homeData}/>);
-    expect(wrapper.find(AboutHome)).to.have.length(1);
+    expect(wrapper.length).to.equal(1);
   });
   it('allows us to set props', () => {
     const wrapper = mount(<AboutHome homeData={homeData} bar="baz" />);
@@ -188,7 +188,7 @@ describe('<AboutHome />', () => {
     expect(wrapper.props().bar).to.equal('foo');
   });
   it('renders the title', () => {
-    const wrapper = shallow(<AboutHome homeData={homeData} title="Loading" />);
-    expect(wrapper.text()).to.contain('Loading');
+    const wrapper = shallow(<AboutHome homeData={homeData} title="Read more about this home" />);
+    expect(wrapper.text()).to.contain('Read more about this home');
   });
 });

@@ -175,9 +175,8 @@ const houseRules = {
   }
 }
 describe('<HouseRules />', () => {
-  it('should contain ', () => {
-    const wrapper = mount(<HouseRules houseRules={houseRules}/>);
-    wrapper.update();
-    expect(wrapper.hasClass('link')).to.equal(true);
+  it('should correctly render ', () => {
+    const wrapper = shallow(<HouseRules houseRules={houseRules}/>);
+    expect(wrapper.length).to.equal(1);
   });
 });
