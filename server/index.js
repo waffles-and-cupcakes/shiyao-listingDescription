@@ -6,8 +6,6 @@ const Listing = require('../db/listing.js');
 const path = require('path');
 const cors = require('cors');
 
-const PORT = 3003;
-
 app.use(cors());
 app.use('/rooms/:id', express.static(path.join(__dirname, '/../public')));
 app.use(bodyParser.urlencoded({extended: false}));
@@ -23,6 +21,4 @@ app.get('/rooms/details/:id', (req, res) => {
   });
 });
 
-app.listen(PORT, () => {
-  console.log('App listening on 3003...');
-});
+module.exports = app;
