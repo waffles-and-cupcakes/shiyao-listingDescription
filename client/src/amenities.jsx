@@ -29,9 +29,9 @@ class Amenities extends React.Component {
     this.renderAmenities = this.renderAmenities.bind(this);
   }
 
-  // componentDidMount() {
-  //   Modal.setAppElement('#readmore');
-  // }
+  componentDidMount() {
+    Modal.setAppElement('#readmore');
+  }
 
   openModal() {
     this.setState({modalIsOpen: true});

@@ -28,9 +28,9 @@ class AboutHome extends React.Component {
     this.closeModal = this.closeModal.bind(this);
   }
 
-  // componentDidMount() {
-  //   Modal.setAppElement('#readmore');
-  // }
+  componentDidMount() {
+    Modal.setAppElement('#readmore');
+  }
 
   openModal() {
     this.setState({modalIsOpen: true});
