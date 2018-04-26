@@ -18,7 +18,6 @@ class App extends React.Component {
   }
 
   componentDidMount() {
-    console.log('hahahaha');
     var id = window.location.pathname.split('/')[2];
     axios.get(`http://localhost:3003/rooms/details/${id}`)
     .then((res) => {
