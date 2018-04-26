@@ -174,9 +174,28 @@ const houseRules = {
     "otherNotes": "Our driveway wraps around the back of house, so feel free to circle around the driveway rather than backing out.\n \rThis house has old plumbing and has a septic system. PLEASE do not flush anything other than toilet paper.\n \rThe second bedroom is detached, and is about a 10ft walk outside from the main house.\n \rTransient Occupancy Tax - A 7% TOT tax required by San Bernardino County is included in the nightly rate.\n \rFor our area, Airbnb does not yet break this down as an extra line item, but rather is included in the base price."
   }
 }
+
 describe('<HouseRules />', () => {
   it('should correctly render ', () => {
     const wrapper = shallow(<HouseRules houseRules={houseRules}/>);
     expect(wrapper.length).to.equal(1);
+  });
+  it('allows us to set props', () => {
+    const wrapper = mount(<HouseRules houseRules={houseRules} bar="baz" />);
+    expect(wrapper.props().bar).to.equal('baz');
+    wrapper.setProps({ bar: 'foo' });
+    expect(wrapper.props().bar).to.equal('foo');
+  });
+  it('simulates click events', () => {
+    const handleClick = sinon.spy();
+    const wrapper = mount((
+      <HouseRules handleClick={handleClick} houseRules={houseRules} />
+    ));
+    wrapper.render().find('#readrules').simulate('click');
+    expect(handleClick).to.have.property('callCount', 1);
+  });
+  it('renders the title', () => {
+    const wrapper = render(<HouseRules houseRules={houseRules} title="Read all rules" />);
+    expect(wrapper.text()).to.contain('Read all rules');
   });
 });

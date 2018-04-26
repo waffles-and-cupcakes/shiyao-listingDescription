@@ -183,4 +183,10 @@ describe('<Amenities />', () => {
     wrapper.update();
     expect(wrapper.length).to.equal(1);
   });
+  it('allows us to set props', () => {
+    const wrapper = mount(<Amenities homeData={homeData} bar="baz" />);
+    expect(wrapper.props().bar).to.equal('baz');
+    wrapper.setProps({ bar: 'foo' });
+    expect(wrapper.props().bar).to.equal('foo');
+  });
 });

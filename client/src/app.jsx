@@ -18,8 +18,8 @@ class App extends React.Component {
   }
 
   componentDidMount() {
+    console.log('hahahaha');
     var id = window.location.pathname.split('/')[2];
-    console.log(id);
     axios.get(`http://localhost:3003/rooms/details/${id}`)
     .then((res) => {
       this.setState({
@@ -60,7 +60,7 @@ class App extends React.Component {
     return (
       <Columns columns="2">
         {amenityWithIcons.map((amenity, index) => {
-          return <div key={index}><i className="material-icons amenity-icon">{iconAmenityMap.get(amenity)}</i>{amenity}</div>
+          return <div key={index}><i key={index} className="material-icons amenity-icon">{iconAmenityMap.get(amenity)}</i>{amenity}</div>
         })}
       </Columns>
     );
