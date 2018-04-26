@@ -29,11 +29,20 @@ describe('<App />', () => {
     const wrapper = render(<App title="Loading" />);
     expect(wrapper.text()).to.contain('Loading');
   });
+  it('should renders a div', () => {
+    const wrapper = shallow(<App />);
+    const div = wrapper.find('div');
+    expect(div.length).to.be.above(0);
+  });
   it('contains one element', () => {
     const wrapper = shallow(<App />);
     wrapper.update();
     expect(wrapper.length).to.equal(1);
   });
+  // it('contains amenities', () => {
+  //   //const render = shallow(<App />);
+  //   expect(render().find(Amenities).length).to.equal(1);
+  // });
 });
 
 

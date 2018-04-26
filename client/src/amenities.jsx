@@ -79,8 +79,8 @@ class Amenities extends React.Component {
           </div>
           <div>
             <div className="amenityType">Not included</div>
-            {this.props.homeData.notIncludedAmenities.map((amenity) => {
-              return <div id="notIncludedAmenities" className="section">{amenity}</div>
+            {this.props.homeData.notIncludedAmenities.map((amenity, index) => {
+              return <div id="notIncludedAmenities" key={index} className="section">{amenity}</div>
             })}
           </div>       
         </Modal>
