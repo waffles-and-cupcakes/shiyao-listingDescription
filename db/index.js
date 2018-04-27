@@ -1,5 +1,5 @@
 const mongoose = require('mongoose');
-const mongoUri = 'mongodb://localhost/airbnbDetails';
+const mongoUri = 'mongodb://mongo/airbnbDetails';
 mongoose.Promise = global.Promise;
 
 mongoose.connect(mongoUri);
