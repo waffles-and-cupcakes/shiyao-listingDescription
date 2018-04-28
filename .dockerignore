@@ -1,0 +1,8 @@
+node_modules
+coverage
+Dockerfile
+docker-compose.yml
+.gitignore
+.git
+README.md
+STYLE-GUIDE.md
