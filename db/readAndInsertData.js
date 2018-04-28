@@ -15,6 +15,7 @@ const readAndInsertJSON = function(callback) {
       Listing.insertMany(data, function(err, result) {
         if (err) {
           console.log('you got an error when inserting');
+          callback();
         } else {
           console.log('inserted!');
           callback();
