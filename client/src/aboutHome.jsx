@@ -3,7 +3,7 @@ import ReactDOM from 'react-dom';
 import Modal from 'react-modal';
 
 const customStyles = {
-  content : {
+  content: {
     top: '50%',
     left: '50%',
     right: 'auto',
@@ -19,7 +19,6 @@ const customStyles = {
 class AboutHome extends React.Component {
   constructor(props) {
     super(props);
-
     this.state = {
       modalIsOpen: false
     };
@@ -58,37 +57,37 @@ class AboutHome extends React.Component {
           style={customStyles}
           contentLabel="AboutHome"
         >
-        <a className="btn-floating btn-small waves-effect waves-light white" onClick={this.closeModal}><i className="material-icons cyan-text text-darken-4">clear</i></a>
+          <a className="btn-floating btn-small waves-effect waves-light white" onClick={this.closeModal}><i className="material-icons cyan-text text-darken-4">clear</i></a>
           <div className="smtitle">Summary </div>
-            <div className="para">
-              {summaryArr.map((para, index) => {
-                return <p key={index}>{para}<br/></p>;
-              })}
-            </div>      
+          <div className="para">
+            {summaryArr.map((para, index) => {
+              return <p key={index}>{para}<br/></p>;
+            })}
+          </div>      
           <div className="smtitle">Space</div>
-            <div className="para">
-              {spaceArr.map((para, index) => {
-                return <p key={index}>{para}<br/></p>;
-              })}
-            </div>    
+          <div className="para">
+            {spaceArr.map((para, index) => {
+              return <p key={index}>{para}<br/></p>;
+            })}
+          </div>    
           <div className="smtitle">Guest access</div>
-            <div className="para">
-              {guestArr.map((para, index) => {
-                return <p key={index}>{para}<br/></p>;
-              })}
-            </div>    
+          <div className="para">
+            {guestArr.map((para, index) => {
+              return <p key={index}>{para}<br/></p>;
+            })}
+          </div>    
           <div className="smtitle">Interaction with guests</div>
-            <div className="para">
-              {interactionArr.map((para, index) => {
-                return <p key={index}>{para}<br/></p>;
-              })}
-            </div>    
+          <div className="para">
+            {interactionArr.map((para, index) => {
+              return <p key={index}>{para}<br/></p>;
+            })}
+          </div>    
           <div className="smtitle">Other notes</div>
-            <div className="para">
-              {otherNotesArr.map((para, index) => {
-                return <p key={index}>{para}<br/></p>;
-              })}
-            </div>       
+          <div className="para">
+            {otherNotesArr.map((para, index) => {
+              return <p key={index}>{para}<br/></p>;
+            })}
+          </div>       
         </Modal>
       </div>
     );

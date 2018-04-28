@@ -20,15 +20,15 @@ class App extends React.Component {
   componentDidMount() {
     var id = window.location.pathname.split('/')[2];
     axios.get(`http://18.216.54.31/rooms/details/${id}`)
-    .then((res) => {
-      this.setState({
-        listingData: res.data,
-        isLoaded: true
+      .then((res) => {
+        this.setState({
+          listingData: res.data,
+          isLoaded: true
+        });
+      })
+      .catch((error) => {
+        console.log(error);
       });
-    })
-    .catch((error) => {
-      console.log(error);
-    })
   }
 
   renderAmenities() {
@@ -59,7 +59,7 @@ class App extends React.Component {
     return (
       <Columns columns="2">
         {amenityWithIcons.map((amenity, index) => {
-          return <div key={index}><i key={index} className="material-icons amenity-icon">{iconAmenityMap.get(amenity)}</i>{amenity}</div>
+          return <div key={index}><i key={index} className="material-icons amenity-icon">{iconAmenityMap.get(amenity)}</i>{amenity}</div>;
         })}
       </Columns>
     );
@@ -85,7 +85,7 @@ class App extends React.Component {
     var iconArr = [];
     for (var i = 0; i < roomMap.length; i++) {
       for (var j = 0; j < roomMap[i].number; j++) {
-        var ele = <i className="material-icons bed-icon">{sleepingArrangementsIconMap.get(roomMap[i].value)}</i>
+        var ele = <i className="material-icons bed-icon">{sleepingArrangementsIconMap.get(roomMap[i].value)}</i>;
         iconArr.push(ele);
       }
     }
@@ -115,7 +115,7 @@ class App extends React.Component {
               <img id="host-pic" src={data.hostPic} alt="Avatar"></img>
               <div>
                 {data.hostName}
-            </div>
+              </div>
             </div>
             <div id="title">
               {data.name}
@@ -128,7 +128,7 @@ class App extends React.Component {
               <i className="material-icons icons">hotel</i><span className="roomstats">{data.numOfBeds} beds</span>
               <i className="material-icons icons">hot_tub</i><span className="roomstats">{data.numOfBaths} baths</span>
             </div>
-          <div id="summary">{data.aboutHome.summary}</div>
+            <div id="summary">{data.aboutHome.summary}</div>
             <div id="readmore"></div>
             <AboutHome homeData={this.state.listingData} />
             <div className="link">Contact host</div>
@@ -141,28 +141,28 @@ class App extends React.Component {
           <div className="section">
             <div className="subtitles">Sleeping arrangements</div>
             <div className="row">            
-                {data.sleepingArrangements.map((bedroom, index) => {
-                  return (
-                    <div className="col s3" key={index} id="sleepingArrangement">
-                      <div>{this.renderSleepingArrangementsIcons(bedroom.value)}</div>
-                      <div id="room">{bedroom.name}</div>
-                      {bedroom.value}
-                    </div>
-                  )
-                })}  
+              {data.sleepingArrangements.map((bedroom, index) => {
+                return (
+                  <div className="col s3" key={index} id="sleepingArrangement">
+                    <div>{this.renderSleepingArrangementsIcons(bedroom.value)}</div>
+                    <div id="room">{bedroom.name}</div>
+                    {bedroom.value}
+                  </div>
+                );
+              })}  
             </div>
           </div>
           <div className="section">
             <div className="subtitles">House rules</div>
             <div>{data.houseRules.basicRules.map((rule, index) => {
-              return <div key={index}>{rule}</div>
+              return <div key={index}>{rule}</div>;
             })}</div>
             <HouseRules houseRules={this.state.listingData}/>
           </div>
           <div className="subtitles">Cancellations</div>
           <div>{data.cancellationPolicy.policyType}</div><br/>
           <div>{data.cancellationPolicy.description}</div>
-         <div className="link"><br/><a className="link" target="_blank" href={data.cancellationPolicy.link}>Get Details</a></div>
+          <div className="link"><br/><a className="link" target="_blank" href={data.cancellationPolicy.link}>Get Details</a></div>
         </div>
       );
     }

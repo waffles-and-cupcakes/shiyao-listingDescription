@@ -7,20 +7,20 @@ class HouseRules extends React.Component {
     super(props);
     this.state = {
       isShown: false
-    }
-  };
+    };
+  }
 
   handleClick() {
-    this.setState({ isShown: !this.state.isShown })
+    this.setState({ isShown: !this.state.isShown });
   }
 
   slideBox() {
     var ruleArr = this.props.houseRules.houseRules.textBody.split('\n \r');
     return (
       <div id="box" key="key">
-        {ruleArr.map((para, index) => {return <p key={index}>{para}<br/></p>})}
+        {ruleArr.map((para, index) => { return <p key={index}>{para}<br/></p>; })}
       </div>
-    )
+    );
   }
 
   render() {
@@ -42,7 +42,7 @@ class HouseRules extends React.Component {
           {component}
         </CSSTransitionGroup>
       </div>
-    )
+    );
   }
 }
 

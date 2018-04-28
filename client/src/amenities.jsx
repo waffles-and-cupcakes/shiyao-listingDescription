@@ -47,17 +47,17 @@ class Amenities extends React.Component {
         <div key={index}>
           <div className="amenityType">{type.amenityType}</div>
           { type.amenityValue.map((amenity, index) => {
-              return (
-                <div className="section" key={index}>
-                  <div className="amenityName">{amenity.name}</div>
-                  <div>{amenity.value}</div>
-                </div>
-              )
-            })
+            return (
+              <div className="section" key={index}>
+                <div className="amenityName">{amenity.name}</div>
+                <div>{amenity.value}</div>
+              </div>
+            );
+          })
           }
         </div>
-      )   
-    })
+      );   
+    });
   }
 
   render() {
@@ -72,7 +72,7 @@ class Amenities extends React.Component {
           style={customStyles}
           contentLabel="Example Modal"
         >
-        <a className="btn-floating btn-small waves-effect waves-light white" onClick={this.closeModal}><i className="material-icons cyan-text text-darken-4">clear</i></a>
+          <a className="btn-floating btn-small waves-effect waves-light white" onClick={this.closeModal}><i className="material-icons cyan-text text-darken-4">clear</i></a>
           <div id="amenityTitle">Amenities</div>
           <div>
             {this.renderAmenities()}
@@ -80,7 +80,7 @@ class Amenities extends React.Component {
           <div>
             <div className="amenityType">Not included</div>
             {this.props.homeData.notIncludedAmenities.map((amenity, index) => {
-              return <div id="notIncludedAmenities" key={index} className="section">{amenity}</div>
+              return <div id="notIncludedAmenities" key={index} className="section">{amenity}</div>;
             })}
           </div>       
         </Modal>

@@ -39,10 +39,6 @@ describe('<App />', () => {
     wrapper.update();
     expect(wrapper.length).to.equal(1);
   });
-  // it('contains amenities', () => {
-  //   //const render = shallow(<App />);
-  //   expect(render().find(Amenities).length).to.equal(1);
-  // });
 });
 
 
