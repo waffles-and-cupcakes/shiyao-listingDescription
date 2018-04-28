@@ -5,7 +5,7 @@ class HouseRules extends React.Component {
   constructor(props) {
     super(props);
     this.state = {
-      isShown: false
+      isShown: false,
     };
   }
 
@@ -14,7 +14,7 @@ class HouseRules extends React.Component {
   }
 
   slideBox() {
-    var ruleArr = this.props.houseRules.houseRules.textBody.split('\n \r');
+    const ruleArr = this.props.houseRules.houseRules.textBody.split('\n \r');
     return (
       <div id="box" key="key">
         {ruleArr.map((para, index) => { return <p key={index}>{para}<br/></p>; })}
@@ -23,14 +23,13 @@ class HouseRules extends React.Component {
   }
 
   render() {
-    let text = this.state.isShown ? 'Hide' : 'Read all rules';
-    let icon = this.state.isShown ? 'keyboard_arrow_up' : 'keyboard_arrow_down';
-    let component = this.state.isShown ? this.slideBox() : '';
+    const text = this.state.isShown ? 'Hide' : 'Read all rules';
+    const icon = this.state.isShown ? 'keyboard_arrow_up' : 'keyboard_arrow_down';
+    const component = this.state.isShown ? this.slideBox() : '';
 
     return (
       <div>
         <div id="readrules" className="link" onClick={this.handleClick.bind(this)}>{text} <i className="material-icons icons">{icon}</i></div>
-
         <CSSTransitionGroup
           transitionName="slide"
           transitionAppear={true}
