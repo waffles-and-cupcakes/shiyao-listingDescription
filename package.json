@@ -1,8 +1,8 @@
 {
-  "name": "",
+  "name": "airbnc-listing-details",
   "version": "",
-  "description": "",
-  "author": "",
+  "description": "listing-details-part-for-airbnc",
+  "author": "Shiyao Li",
   "license": "",
   "engines": {
     "node": ">=6.13.0"
