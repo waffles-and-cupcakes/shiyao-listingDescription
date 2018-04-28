@@ -1,7 +1,7 @@
-var fs = require('fs');
-var jsf = require('json-schema-faker');
+const fs = require('fs');
+const jsf = require('json-schema-faker');
 
-var schema = {
+const schema = {
   type: 'object',
   properties: {
     _id: 0,
@@ -180,15 +180,15 @@ var schema = {
       type: 'integer',
       minimum: 3,
       exclusiveMinimum: true,
-    }
+    },
   },
 };
 
-jsf.extend('faker', function() {
+jsf.extend('faker', () => {
   return require('faker');
 });
 
-var removeDuplicateAmenities = function(sample) {
+const removeDuplicateAmenities = function(sample) {
   var obj = {};
   for (var i = 0; i < sample.amenities.length; i++) {
     obj[sample.amenities[i].amenityType] = sample.amenities[i];
@@ -199,7 +199,7 @@ var removeDuplicateAmenities = function(sample) {
   }
 };
 
-var removeDuplicateAmenitiesValues = function(sample) {
+const removeDuplicateAmenitiesValues = function(sample) {
   var mySet = new Set();
   for (var i = 0; i < sample.amenities.length; i++) {
     var newAmenityValueArr = [];
@@ -214,7 +214,7 @@ var removeDuplicateAmenitiesValues = function(sample) {
   }
 };
 
-var removeDuplicateSleepingArrangements = function(sample) {
+const removeDuplicateSleepingArrangements = function(sample) {
   var obj = {};
   for (var i = 0; i < sample.sleepingArrangements.length; i++) {
     obj[sample.sleepingArrangements[i].name] = sample.sleepingArrangements[i];
@@ -225,7 +225,7 @@ var removeDuplicateSleepingArrangements = function(sample) {
   }
 };
 
-var generate100Items = function(id) {
+const generate100Items = function(id) {
   for (var i = 0; i < 100; i++) {
     jsf.resolve(schema).then(function(sample) {
       id++;

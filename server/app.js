@@ -8,11 +8,11 @@ const cors = require('cors');
 
 app.use(cors());
 app.use('/rooms/:id', express.static(path.join(__dirname, '/../public')));
-app.use(bodyParser.urlencoded({extended: false}));
+app.use(bodyParser.urlencoded({ extended: false }));
 
 app.get('/rooms/details/:id', (req, res) => {
   var id = req.params.id;
-  Listing.findOne({_id: id}).exec((err, listings) => {
+  Listing.findOne({ _id: id }).exec((err, listings) => {
     if (err) {
       res.send('You got an error when saving data');
     } else {
