@@ -1,5 +1,4 @@
 import React from 'react';
-import ReactDOM from 'react-dom';
 import Modal from 'react-modal';
 
 const customStyles = {
@@ -13,7 +12,7 @@ const customStyles = {
     overflow: 'scroll',
     height: '600px',
     width: '600px',
-  }
+  },
 };
 
 class Amenities extends React.Component {
@@ -21,7 +20,7 @@ class Amenities extends React.Component {
     super(props);
 
     this.state = {
-      modalIsOpen: false
+      modalIsOpen: false,
     };
 
     this.openModal = this.openModal.bind(this);
@@ -34,11 +33,11 @@ class Amenities extends React.Component {
   }
 
   openModal() {
-    this.setState({modalIsOpen: true});
+    this.setState({ modalIsOpen: true });
   }
 
   closeModal() {
-    this.setState({modalIsOpen: false});
+    this.setState({ modalIsOpen: false });
   }
 
   renderAmenities() {
@@ -60,7 +59,6 @@ class Amenities extends React.Component {
   }
 
   render() {
- 
     return (
       <div>
         <div className="link"><span onClick={this.openModal}>Show all amenities</span></div>
@@ -81,7 +79,7 @@ class Amenities extends React.Component {
             {this.props.homeData.notIncludedAmenities.map((amenity, index) => {
               return <div id="notIncludedAmenities" key={index} className="section">{amenity}</div>;
             })}
-          </div>       
+          </div>
         </Modal>
       </div>
     );
