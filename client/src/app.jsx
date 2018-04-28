@@ -33,8 +33,7 @@ class App extends React.Component {
 
   renderAmenities() {
 
-    const { listingData } = this.state;
-    const data = listingData;
+    const data = this.state.listingData;
 
     const iconAmenityMap = new Map();
     iconAmenityMap.set('Wifi', 'network_wifi');
@@ -57,7 +56,7 @@ class App extends React.Component {
     });
 
     return (
-      <Columns columns="2">
+      <Columns columns={2}>
         {amenityWithIcons.map((amenity, index) => {
           return <div key={index}><i key={index} className="material-icons amenity-icon">{iconAmenityMap.get(amenity)}</i>{amenity}</div>;
         })}
@@ -98,11 +97,9 @@ class App extends React.Component {
 
   render() {
 
-    const { isLoaded, listingData } = this.state;
-    const data = listingData;
+    const data = this.state.listingData;
     
-
-    if (!isLoaded) {
+    if (!this.state.isLoaded) {
       return (<div>Loading</div>);
     } else {
       return (
@@ -124,19 +121,19 @@ class App extends React.Component {
               {data.location}
             </div>
             <div className="stats">
-              <i className="material-icons icons">people</i><span className="roomstats">{data.maxNumOfGuests} guests</span>
-              <i className="material-icons icons">hotel</i><span className="roomstats">{data.numOfBeds} beds</span>
-              <i className="material-icons icons">hot_tub</i><span className="roomstats">{data.numOfBaths} baths</span>
+              <i className="material-icons icons">people</i><span className="roomstats">{data.maxNumOfGuests} {data.maxNumOfGuests > 1 ? 'guests' : 'guest'}</span>
+              <i className="material-icons icons">hotel</i><span className="roomstats">{data.numOfBeds} {data.numOfBeds > 1 ? 'beds' : 'bed'}</span>
+              <i className="material-icons icons">hot_tub</i><span className="roomstats">{data.numOfBaths} {data.numOfBaths > 1 ? 'baths' : 'bath'}</span>
             </div>
             <div id="summary">{data.aboutHome.summary}</div>
             <div id="readmore"></div>
-            <AboutHome homeData={this.state.listingData} />
+            <AboutHome homeData={data} />
             <div className="link">Contact host</div>
           </div>
           <div className="section">
             <div className="subtitles">Amenities</div>
             <div>{this.renderAmenities()}</div>
-            <Amenities homeData={this.state.listingData}/>
+            <Amenities homeData={data}/>
           </div>
           <div className="section">
             <div className="subtitles">Sleeping arrangements</div>
@@ -157,7 +154,7 @@ class App extends React.Component {
             <div>{data.houseRules.basicRules.map((rule, index) => {
               return <div key={index}>{rule}</div>;
             })}</div>
-            <HouseRules houseRules={this.state.listingData}/>
+            <HouseRules houseRules={data}/>
           </div>
           <div className="subtitles">Cancellations</div>
           <div>{data.cancellationPolicy.policyType}</div><br/>

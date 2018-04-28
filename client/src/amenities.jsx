@@ -53,10 +53,9 @@ class Amenities extends React.Component {
                 <div>{amenity.value}</div>
               </div>
             );
-          })
-          }
+          }) }
         </div>
-      );   
+      );
     });
   }
 

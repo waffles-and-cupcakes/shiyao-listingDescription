@@ -1,7 +1,6 @@
 import React from 'react';
 import CSSTransitionGroup from 'react-addons-css-transition-group';
 
-
 class HouseRules extends React.Component {
   constructor(props) {
     super(props);
