@@ -7,7 +7,7 @@ mongoose.Promise = global.Promise;
 
 const readAndInsertJSON = function(callback) {
   for (var i = 1; i <= 100; i++) {
-    fs.readFile(`./fakeData/${i}.json`, 'utf8', (err, data) => {
+    fs.readFile(`db/fakeData/${i}.json`, 'utf8', (err, data) => {
       if (err) {
         throw err;
       }

@@ -8,8 +8,7 @@
     "node": ">=6.13.0"
   },
   "scripts": {
-    "start-server": "nodemon server/index.js",
-    "build": "node db/dummyData.js",
+    "start": "node db/readAndInsertData.js && nodemon server/index.js",
     "test": "jest --coverage"
   },
   "dependencies": {
