@@ -156,10 +156,12 @@ class App extends React.Component {
             })}</div>
             <HouseRules houseRules={data}/>
           </div>
-          <div className="subtitles">Cancellations</div>
-          <div>{data.cancellationPolicy.policyType}</div><br/>
-          <div>{data.cancellationPolicy.description}</div>
-          <div className="link"><br/><a className="link" target="_blank" href={data.cancellationPolicy.link}>Get Details</a></div>
+          <div className="section">
+            <div className="subtitles">Cancellations</div>
+            <div>{data.cancellationPolicy.policyType}</div><br/>
+            <div>{data.cancellationPolicy.description}</div>
+            <div className="link"><br/><a className="link" target="_blank" href={data.cancellationPolicy.link}>Get Details</a></div>
+          </div>
         </div>
       );
     }

@@ -127,7 +127,7 @@ var schema = {
         policyType: {
           type: 'string',
           faker: {
-              'random.arrayElement': [['Strict', 'Super Strict 30 Days', 'Super Strict 60 Days', 'Moderate', 'Flexible', 'Long Term', 'Strict(Grace Period)']]
+            'random.arrayElement': [['Strict', 'Super Strict 30 Days', 'Super Strict 60 Days', 'Moderate', 'Flexible', 'Long Term', 'Strict(Grace Period)']]
           },
         },
         description: {
@@ -139,7 +139,7 @@ var schema = {
           faker: 'internet.url',
         },
       },
-      required: ['policyType','description','link'],
+      required: ['policyType', 'description', 'link'],
     },
     aboutHome: {
       type: 'object',
@@ -165,10 +165,10 @@ var schema = {
           faker: 'lorem.paragraphs',
         },
       },
-      required: ['summary','space','guestAccess','interactionWithGuests','otherNotes']
+      required: ['summary', 'space', 'guestAccess', 'interactionWithGuests', 'otherNotes']
     },
   },
-  required: ['_id','name','location','address','type','maxNumOfGuests','numOfBeds','numOfBaths','hostName','hostPic','user','amenities','notIncludedAmenities','sleepingArrangements','houseRules','cancellationPolicy','aboutHome'],
+  required: ['_id', 'name', 'location', 'address', 'type', 'maxNumOfGuests', 'numOfBeds', 'numOfBaths', 'hostName', 'hostPic', 'user', 'amenities', 'notIncludedAmenities', 'sleepingArrangements', 'houseRules', 'cancellationPolicy', 'aboutHome'],
   definitions: {
     positiveInt: {
       type: 'integer',
@@ -197,7 +197,7 @@ var removeDuplicateAmenities = function(sample) {
   for (var key in obj) {
     sample.amenities.push(obj[key]);
   }
-}
+};
 
 var removeDuplicateAmenitiesValues = function(sample) {
   var mySet = new Set();
@@ -212,7 +212,7 @@ var removeDuplicateAmenitiesValues = function(sample) {
     }
     sample.amenities[i].amenityValue = newAmenityValueArr;
   }
-}
+};
 
 var removeDuplicateSleepingArrangements = function(sample) {
   var obj = {};
@@ -223,7 +223,7 @@ var removeDuplicateSleepingArrangements = function(sample) {
   for (var key in obj) {
     sample.sleepingArrangements.push(obj[key]);
   }
-}
+};
 
 var generate100Items = function(id) {
   for (var i = 0; i < 100; i++) {
@@ -242,7 +242,7 @@ var generate100Items = function(id) {
       });
     });
   }
-}
+};
 
 generate100Items(2);
 
