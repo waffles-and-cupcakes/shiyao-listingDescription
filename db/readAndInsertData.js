@@ -1,6 +1,6 @@
 const db = require('./index.js');
 const mongoose = require('mongoose');
-const Listing = require('./listing.js');
+const Listing = require('./listingSchema.js');
 const fs = require('fs');
 mongoose.Promise = global.Promise;
 
