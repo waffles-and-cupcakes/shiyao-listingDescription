@@ -84,7 +84,7 @@ class App extends React.Component {
     var iconArr = [];
     for (var i = 0; i < roomMap.length; i++) {
       for (var j = 0; j < roomMap[i].number; j++) {
-        var ele = <i className="material-icons bed-icon">{sleepingArrangementsIconMap.get(roomMap[i].value)}</i>;
+        var ele = <i key={iconArr.indexOf(ele)} className="material-icons bed-icon">{sleepingArrangementsIconMap.get(roomMap[i].value)}</i>;
         iconArr.push(ele);
       }
     }
