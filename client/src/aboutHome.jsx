@@ -1,9 +1,8 @@
 import React from 'react';
-import ReactDOM from 'react-dom';
 import Modal from 'react-modal';
 
 const customStyles = {
-  content : {
+  content: {
     top: '50%',
     left: '50%',
     right: 'auto',
@@ -13,15 +12,14 @@ const customStyles = {
     overflow: 'scroll',
     width: '600px',
     height: '600px',
-  }
+  },
 };
 
 class AboutHome extends React.Component {
   constructor(props) {
     super(props);
-
     this.state = {
-      modalIsOpen: false
+      modalIsOpen: false,
     };
 
     this.openModal = this.openModal.bind(this);
@@ -33,20 +31,19 @@ class AboutHome extends React.Component {
   }
 
   openModal() {
-    this.setState({modalIsOpen: true});
+    this.setState({ modalIsOpen: true });
   }
 
   closeModal() {
-    this.setState({modalIsOpen: false});
+    this.setState({ modalIsOpen: false });
   }
 
   render() {
-
-    var summaryArr = this.props.homeData.aboutHome.summary.split('\n \r');
-    var spaceArr = this.props.homeData.aboutHome.space.split('\n \r');
-    var guestArr = this.props.homeData.aboutHome.guestAccess.split('\n \r');
-    var interactionArr = this.props.homeData.aboutHome.interactionWithGuests.split('\n \r');
-    var otherNotesArr = this.props.homeData.aboutHome.otherNotes.split('\n \r');
+    const summaryArr = this.props.homeData.aboutHome.summary.split('\n \r');
+    const spaceArr = this.props.homeData.aboutHome.space.split('\n \r');
+    const guestArr = this.props.homeData.aboutHome.guestAccess.split('\n \r');
+    const interactionArr = this.props.homeData.aboutHome.interactionWithGuests.split('\n \r');
+    const otherNotesArr = this.props.homeData.aboutHome.otherNotes.split('\n \r');
 
     return (
       <div>
@@ -58,37 +55,37 @@ class AboutHome extends React.Component {
           style={customStyles}
           contentLabel="AboutHome"
         >
-        <a className="btn-floating btn-small waves-effect waves-light white" onClick={this.closeModal}><i className="material-icons cyan-text text-darken-4">clear</i></a>
+          <button className="btn-floating btn-small waves-effect waves-light white" onClick={this.closeModal}><i className="material-icons cyan-text text-darken-4">clear</i></button>
           <div className="smtitle">Summary </div>
-            <div className="para">
-              {summaryArr.map((para, index) => {
-                return <p key={index}>{para}<br/></p>;
-              })}
-            </div>      
+          <div className="para">
+            {summaryArr.map((para, index) => {
+              return <p key={index}>{para}<br /></p>;
+            })}
+          </div>      
           <div className="smtitle">Space</div>
-            <div className="para">
-              {spaceArr.map((para, index) => {
-                return <p key={index}>{para}<br/></p>;
-              })}
-            </div>    
+          <div className="para">
+            {spaceArr.map((para, index) => {
+              return <p key={index}>{para}<br /></p>;
+            })}
+          </div>    
           <div className="smtitle">Guest access</div>
-            <div className="para">
-              {guestArr.map((para, index) => {
-                return <p key={index}>{para}<br/></p>;
-              })}
-            </div>    
+          <div className="para">
+            {guestArr.map((para, index) => {
+              return <p key={index}>{para}<br /></p>;
+            })}
+          </div>    
           <div className="smtitle">Interaction with guests</div>
-            <div className="para">
-              {interactionArr.map((para, index) => {
-                return <p key={index}>{para}<br/></p>;
-              })}
-            </div>    
+          <div className="para">
+            {interactionArr.map((para, index) => {
+              return <p key={index}>{para}<br /></p>;
+            })}
+          </div>
           <div className="smtitle">Other notes</div>
-            <div className="para">
-              {otherNotesArr.map((para, index) => {
-                return <p key={index}>{para}<br/></p>;
-              })}
-            </div>       
+          <div className="para">
+            {otherNotesArr.map((para, index) => {
+              return <p key={index}>{para}<br /></p>;
+            })}
+          </div>
         </Modal>
       </div>
     );
@@ -96,4 +93,3 @@ class AboutHome extends React.Component {
 }
 
 export default AboutHome;
-

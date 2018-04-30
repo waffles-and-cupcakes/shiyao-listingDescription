@@ -1,5 +1,4 @@
 import React from 'react';
-import ReactDOM from 'react-dom';
 import axios from 'axios';
 import Columns from 'react-columns';
 import AboutHome from './aboutHome.jsx';
@@ -19,22 +18,20 @@ class App extends React.Component {
 
   componentDidMount() {
     var id = window.location.pathname.split('/')[2];
-    axios.get(`http://localhost:3003/rooms/details/${id}`)
+    axios.get(`/rooms/details/${id}`)
     .then((res) => {
       this.setState({
         listingData: res.data,
-        isLoaded: true
+        isLoaded: true,
       });
     })
     .catch((error) => {
-      console.log(error);
-    })
+      console.error(error);
+    });
   }
 
   renderAmenities() {
-
-    const { listingData } = this.state;
-    const data = listingData;
+    const data = this.state.listingData;
 
     const iconAmenityMap = new Map();
     iconAmenityMap.set('Wifi', 'network_wifi');
@@ -52,14 +49,14 @@ class App extends React.Component {
           if (amenityWithIcons.length === 6) {
             return;
           }
-        } 
+        }
       });
     });
 
     return (
-      <Columns columns="2">
+      <Columns columns={2}>
         {amenityWithIcons.map((amenity, index) => {
-          return <div key={index}><i key={index} className="material-icons amenity-icon">{iconAmenityMap.get(amenity)}</i>{amenity}</div>
+          return <div key={index}><i key={index} className="material-icons amenity-icon">{iconAmenityMap.get(amenity)}</i>{amenity}</div>;
         })}
       </Columns>
     );
@@ -77,15 +74,14 @@ class App extends React.Component {
     var roomMap = bedArr.map((bed) => {
       if (bed[bed.length - 1] === 's') {
         return {number: parseInt(bed.slice(0, 1)), value: bed.slice(2, bed.length - 1)};
-      } else {
-        return {number: parseInt(bed.slice(0, 1)), value: bed.slice(2)};
       }
+      return {number: parseInt(bed.slice(0, 1)), value: bed.slice(2)};     
     });
 
     var iconArr = [];
     for (var i = 0; i < roomMap.length; i++) {
       for (var j = 0; j < roomMap[i].number; j++) {
-        var ele = <i className="material-icons bed-icon">{sleepingArrangementsIconMap.get(roomMap[i].value)}</i>
+        var ele = <i key={iconArr.indexOf(ele)} className="material-icons bed-icon">{sleepingArrangementsIconMap.get(roomMap[i].value)}</i>;
         iconArr.push(ele);
       }
     }
@@ -97,79 +93,74 @@ class App extends React.Component {
   }
 
   render() {
-
-    const { isLoaded, listingData } = this.state;
-    const data = listingData;
-    
-
-    if (!isLoaded) {
+    const data = this.state.listingData;
+    if (!this.state.isLoaded) {
       return (<div>Loading</div>);
-    } else {
-      return (
-        <div className="container">
-          <div className="section">
-            <div id="listingtype">
-              {data.type.toUpperCase()}
-            </div>
-            <div id="host">
-              <img id="host-pic" src={data.hostPic} alt="Avatar"></img>
-              <div>
-                {data.hostName}
-            </div>
-            </div>
-            <div id="title">
-              {data.name}
-            </div>
-            <div id="location">
-              {data.location}
-            </div>
-            <div className="stats">
-              <i className="material-icons icons">people</i><span className="roomstats">{data.maxNumOfGuests} guests</span>
-              <i className="material-icons icons">hotel</i><span className="roomstats">{data.numOfBeds} beds</span>
-              <i className="material-icons icons">hot_tub</i><span className="roomstats">{data.numOfBaths} baths</span>
-            </div>
-          <div id="summary">{data.aboutHome.summary}</div>
-            <div id="readmore"></div>
-            <AboutHome homeData={this.state.listingData} />
-            <div className="link">Contact host</div>
-          </div>
-          <div className="section">
-            <div className="subtitles">Amenities</div>
-            <div>{this.renderAmenities()}</div>
-            <Amenities homeData={this.state.listingData}/>
-          </div>
-          <div className="section">
-            <div className="subtitles">Sleeping arrangements</div>
-            <div className="row">            
-                {data.sleepingArrangements.map((bedroom, index) => {
-                  return (
-                    <div className="col s3" key={index} id="sleepingArrangement">
-                      <div>{this.renderSleepingArrangementsIcons(bedroom.value)}</div>
-                      <div id="room">{bedroom.name}</div>
-                      {bedroom.value}
-                    </div>
-                  )
-                })}  
-            </div>
-          </div>
-          <div className="section">
-            <div className="subtitles">House rules</div>
-            <div>{data.houseRules.basicRules.map((rule, index) => {
-              return <div key={index}>{rule}</div>
-            })}</div>
-            <HouseRules houseRules={this.state.listingData}/>
-          </div>
-          <div className="subtitles">Cancellations</div>
-          <div>{data.cancellationPolicy.policyType}</div><br/>
-          <div>{data.cancellationPolicy.description}</div>
-         <div className="link"><br/><a className="link" target="_blank" href={data.cancellationPolicy.link}>Get Details</a></div>
-        </div>
-      );
     }
+    return (
+      <div className="container">
+        <div className="section">
+          <div id="listingtype">
+            {data.type.toUpperCase()}
+          </div>
+          <div id="host">
+            <img id="host-pic" src={data.hostPic} alt="Avatar" />
+            <div>
+              {data.hostName}
+            </div>
+          </div>
+          <div id="title">
+            {data.name}
+          </div>
+          <div id="location">
+            {data.location}
+          </div>
+          <div className="stats">
+            <i className="material-icons icons">people</i><span className="roomstats">{data.maxNumOfGuests} {data.maxNumOfGuests > 1 ? 'guests' : 'guest'}</span>
+            <i className="material-icons icons">hotel</i><span className="roomstats">{data.numOfBeds} {data.numOfBeds > 1 ? 'beds' : 'bed'}</span>
+            <i className="material-icons icons">hot_tub</i><span className="roomstats">{data.numOfBaths} {data.numOfBaths > 1 ? 'baths' : 'bath'}</span>
+          </div>
+          <div id="summary">{data.aboutHome.summary}</div>
+          <div id="readmore" />
+          <AboutHome homeData={data} />
+          <div className="link">Contact host</div>
+        </div>
+        <div className="section">
+          <div className="subtitles">Amenities</div>
+          <div>{this.renderAmenities()}</div>
+          <Amenities homeData={data} />
+        </div>
+        <div className="section">
+          <div className="subtitles">Sleeping arrangements</div>
+          <div className="row">
+            {data.sleepingArrangements.map((bedroom, index) => {
+              return (
+                <div className="col s3" key={index} id="sleepingArrangement">
+                  <div>{this.renderSleepingArrangementsIcons(bedroom.value)}</div>
+                  <div id="room">{bedroom.name}</div>
+                  {bedroom.value}
+                </div>
+              );
+            })}  
+          </div>
+        </div>
+        <div className="section">
+          <div className="subtitles">House rules</div>
+          <div>{data.houseRules.basicRules.map((rule, index) => {
+            return <div key={index}>{rule}</div>;
+          })}
+          </div>
+          <HouseRules houseRules={data} />
+        </div>
+        <div className="section">
+          <div className="subtitles">Cancellations</div>
+          <div>{data.cancellationPolicy.policyType}</div><br />
+          <div>{data.cancellationPolicy.description}</div>
+          <div className="link"><br /><a className="link" target="_blank" href={data.cancellationPolicy.link}>Get Details</a></div>
+        </div>
+      </div>
+    );
   }
 }
 
 export default App;
-
-
-
