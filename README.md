@@ -1,13 +1,11 @@
 # Project Name
 
-> Project description
+Airbnc
 
 ## Related Projects
 
-  - https://github.com/teamName/repo
-  - https://github.com/teamName/repo
-  - https://github.com/teamName/repo
-  - https://github.com/teamName/repo
+  - https://github.com/waffles-and-cupcakes/steve-photo-gallery
+  - https://github.com/waffles-and-cupcakes/belinda-reviews
 
 ## Table of Contents
 
