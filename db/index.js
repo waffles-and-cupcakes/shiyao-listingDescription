@@ -1,6 +1,6 @@
 const mongoose = require('mongoose');
 
-const mongoUri = 'mongodb://mongo/airbnbDetails';
+const mongoUri = 'mongodb://localhost/airbnbDetails';
 
 mongoose.Promise = global.Promise;
 
