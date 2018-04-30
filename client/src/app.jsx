@@ -18,16 +18,16 @@ class App extends React.Component {
 
   componentDidMount() {
     var id = window.location.pathname.split('/')[2];
-    axios.get(`/rooms/details/${id}`)
-      .then((res) => {
-        this.setState({
-          listingData: res.data,
-          isLoaded: true,
-        });
-      })
-      .catch((error) => {
-        console.error(error);
+    axios.get(`http://18.216.54.31/rooms/details/${id}`)
+    .then((res) => {
+      this.setState({
+        listingData: res.data,
+        isLoaded: true,
       });
+    })
+    .catch((error) => {
+      console.error(error);
+    });
   }
 
   renderAmenities() {

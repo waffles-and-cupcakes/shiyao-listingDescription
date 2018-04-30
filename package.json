@@ -9,6 +9,7 @@
   },
   "scripts": {
     "start": "node db/readAndInsertData.js && nodemon server/index.js",
+    "dev:react": "webpack -w",
     "test": "jest --coverage"
   },
   "dependencies": {
